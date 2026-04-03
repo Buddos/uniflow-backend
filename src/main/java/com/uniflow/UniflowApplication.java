@@ -1,0 +1,16 @@
+package com.uniflow;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
+
+@SpringBootApplication
+@ServletComponentScan  // Enables servlet component scanning
+@EnableScheduling      // Enables scheduled tasks
+public class UniflowApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(UniflowApplication.class, args);
+        System.out.println("🚀 UniFlow System Started Successfully!");
+    }
+}

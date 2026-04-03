@@ -1,0 +1,37 @@
+package com.uniflow.servlet;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.uniflow.service.TripService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+@WebServlet(name = "TripServlet", urlPatterns = {"/servlet/trips/*"})
+@Component
+public class TripServlet extends HttpServlet {
+    
+    @Autowired
+    private TripService tripService;
+    
+    private ObjectMapper objectMapper = new ObjectMapper();
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+        
+        try {
+            List<?> trips = tripService.getAllTrips();
+            out.write(objectMapper.writeValueAsString(trips));
+        } catch (Exception e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            out.write("{\"error\": \"" + e.getMessage() + "\"}");
+        }
+    }
+}
