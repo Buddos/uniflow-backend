@@ -1,6 +1,6 @@
 package com.uniflow.dto;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 public class CourseRequestDTO {
     @NotNull(message = "Course unit ID is required")

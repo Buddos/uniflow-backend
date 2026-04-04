@@ -3,7 +3,7 @@ package com.uniflow.util;
 import com.uniflow.listener.SessionTrackingListener;
 import com.uniflow.model.User;
 import jakarta.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 public class SessionUtil {
     
