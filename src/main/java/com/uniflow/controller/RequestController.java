@@ -83,4 +83,14 @@ public class RequestController {
     public ResponseEntity<Map<String, Object>> getStats() {
         return ResponseEntity.ok(requestService.getRequestStatistics());
     }
+    
+    @PostMapping("/admin/enforce-deadline")
+    public ResponseEntity<Map<String, String>> enforceDeadline(
+            @RequestParam String currentSemester,
+            @RequestParam String previousSemester) {
+        requestService.enforceDeadline(currentSemester, previousSemester);
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Deadline enforced and fallback data applied successfully");
+        return ResponseEntity.ok(response);
+    }
 }

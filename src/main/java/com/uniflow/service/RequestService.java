@@ -8,7 +8,8 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import java.util.Set;
+import java.util.stream.Collectors;
 @Service
 public class RequestService {
     
@@ -59,5 +60,39 @@ public class RequestService {
         stats.put("accepted", requestRepository.findByStatus("ACCEPTED").size());
         stats.put("rejected", requestRepository.findByStatus("REJECTED").size());
         return stats;
+    }
+    
+    public void enforceDeadline(String currentSemester, String previousSemester) {
+        List<CourseUnitRequest> prevRequests = requestRepository.findBySemester(previousSemester);
+        Set<String> prevDepts = prevRequests.stream()
+                .map(CourseUnitRequest::getRequestingDepartment)
+                .collect(Collectors.toSet());
+                
+        List<CourseUnitRequest> currRequests = requestRepository.findBySemester(currentSemester);
+        Set<String> currDepts = currRequests.stream()
+                .map(CourseUnitRequest::getRequestingDepartment)
+                .collect(Collectors.toSet());
+                
+        for (String dept : prevDepts) {
+            if (!currDepts.contains(dept)) {
+                List<CourseUnitRequest> deptPrevRequests = prevRequests.stream()
+                    .filter(r -> r.getRequestingDepartment().equals(dept) && "ACCEPTED".equals(r.getStatus()))
+                    .collect(Collectors.toList());
+                
+                for (CourseUnitRequest prevReq : deptPrevRequests) {
+                    CourseUnitRequest newReq = new CourseUnitRequest();
+                    newReq.setCourseUnit(prevReq.getCourseUnit());
+                    newReq.setRequestingDepartment(dept);
+                    newReq.setProvidingDepartment(prevReq.getProvidingDepartment());
+                    newReq.setExpectedStudents(prevReq.getExpectedStudents());
+                    newReq.setStatus("ACCEPTED");
+                    newReq.setSemester(currentSemester);
+                    newReq.setIsAutoFallback(true);
+                    newReq.setRequestedAt(LocalDateTime.now());
+                    newReq.setRespondedAt(LocalDateTime.now());
+                    requestRepository.save(newReq);
+                }
+            }
+        }
     }
 }

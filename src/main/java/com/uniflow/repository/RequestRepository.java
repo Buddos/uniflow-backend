@@ -14,6 +14,8 @@ public interface RequestRepository extends JpaRepository<CourseUnitRequest, Long
     List<CourseUnitRequest> findByStatus(String status);
     List<CourseUnitRequest> findByProvidingDepartmentAndStatus(String department, String status);
     
+    List<CourseUnitRequest> findBySemester(String semester);
+    List<CourseUnitRequest> findByRequestingDepartmentAndSemester(String department, String semester);
     @Query("SELECT r FROM CourseUnitRequest r WHERE r.status = 'PENDING' AND r.providingDepartment = :department")
     List<CourseUnitRequest> findPendingRequestsForDepartment(@Param("department") String department);
     

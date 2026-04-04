@@ -26,6 +26,9 @@ public class CourseUnitRequest {
     
     private String comments;
     
+    private String semester;
+    
+    private Boolean isAutoFallback = false;
     private LocalDateTime requestedAt;
     
     private LocalDateTime respondedAt;
@@ -60,6 +63,11 @@ public class CourseUnitRequest {
     public String getComments() { return comments; }
     public void setComments(String comments) { this.comments = comments; }
     
+    public String getSemester() { return semester; }
+    public void setSemester(String semester) { this.semester = semester; }
+    
+    public Boolean getIsAutoFallback() { return isAutoFallback; }
+    public void setIsAutoFallback(Boolean isAutoFallback) { this.isAutoFallback = isAutoFallback; }
     public LocalDateTime getRequestedAt() { return requestedAt; }
     public void setRequestedAt(LocalDateTime requestedAt) { this.requestedAt = requestedAt; }
     
