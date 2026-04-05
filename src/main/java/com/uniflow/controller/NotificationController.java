@@ -2,6 +2,7 @@ package com.uniflow.controller;
 
 import com.uniflow.model.Notification;
 import com.uniflow.service.NotificationService;
+import com.uniflow.service.RealtimeService;
 import com.uniflow.util.SessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,9 @@ public class NotificationController {
     
     @Autowired
     private NotificationService notificationService;
+
+    @Autowired
+    private RealtimeService realtimeService;
     
     @GetMapping
     public ResponseEntity<List<Map<String, Object>>> getNotifications(HttpServletRequest request) {
@@ -53,13 +57,16 @@ public class NotificationController {
     
     @PostMapping("/{id}/read")
     public ResponseEntity<Notification> markAsRead(@PathVariable Long id) {
-        return ResponseEntity.ok(notificationService.markAsRead(id));
+        Notification updated = notificationService.markAsRead(id);
+        realtimeService.broadcastNotificationChange("UPDATE", updated);
+        return ResponseEntity.ok(updated);
     }
     
     @PostMapping("/mark-all-read")
     public ResponseEntity<?> markAllAsRead(HttpServletRequest request) {
         Long userId = SessionUtil.getCurrentUserId(request);
         notificationService.markAllAsRead(userId);
+        realtimeService.broadcastNotificationChange("UPDATE", java.util.Map.of("userId", userId, "allRead", true));
         return ResponseEntity.ok().build();
     }
 }

@@ -9,15 +9,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
+
+    /**
+     * Origins permitted for both REST and WebSocket (SockJS) connections.
+     * Keep this list in sync with {@link WebSocketConfig#ALLOWED_ORIGINS}.
+     */
+    private static final String[] ALLOWED_ORIGINS = {
+            "http://localhost:3000",
+            "http://localhost:5173",
+            "http://localhost:8080"
+    };
     
     @Autowired
     private AuthInterceptor authInterceptor;
     
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("http://localhost:3000", "http://localhost:5173", "http://localhost:8080")
+        // REST API endpoints
+        registry.addMapping("/api/**")
+                .allowedOrigins(ALLOWED_ORIGINS)
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
+                .allowedHeaders("*")
+                .allowCredentials(true)
+                .maxAge(3600);
+
+        // WebSocket / SockJS handshake endpoint
+        registry.addMapping("/ws/**")
+                .allowedOrigins(ALLOWED_ORIGINS)
+                .allowedMethods("GET", "POST", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true)
                 .maxAge(3600);
