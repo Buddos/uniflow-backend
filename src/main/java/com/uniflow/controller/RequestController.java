@@ -4,6 +4,7 @@ import com.uniflow.dto.CourseRequestDTO;
 import com.uniflow.model.CourseUnit;
 import com.uniflow.model.CourseUnitRequest;
 import com.uniflow.repository.CourseUnitRepository;
+import com.uniflow.service.RealtimeService;
 import com.uniflow.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,9 @@ public class RequestController {
     
     @Autowired
     private RequestService requestService;
+
+    @Autowired
+    private RealtimeService realtimeService;
     
     @Autowired
     private CourseUnitRepository courseUnitRepository;
@@ -64,19 +68,25 @@ public class RequestController {
         request.setExpectedStudents(requestDTO.getExpectedStudents());
         request.setProvidingDepartment(courseUnit.getDepartment());
         
-        return ResponseEntity.ok(requestService.createRequest(request));
+        CourseUnitRequest created = requestService.createRequest(request);
+        realtimeService.broadcastRequestChange("CREATE", created);
+        return ResponseEntity.ok(created);
     }
     
     @PostMapping("/{requestId}/accept")
     public ResponseEntity<CourseUnitRequest> acceptRequest(@PathVariable Long requestId) {
-        return ResponseEntity.ok(requestService.acceptRequest(requestId));
+        CourseUnitRequest accepted = requestService.acceptRequest(requestId);
+        realtimeService.broadcastRequestChange("UPDATE", accepted);
+        return ResponseEntity.ok(accepted);
     }
     
     @PostMapping("/{requestId}/reject")
     public ResponseEntity<CourseUnitRequest> rejectRequest(
             @PathVariable Long requestId,
             @RequestParam String reason) {
-        return ResponseEntity.ok(requestService.rejectRequest(requestId, reason));
+        CourseUnitRequest rejected = requestService.rejectRequest(requestId, reason);
+        realtimeService.broadcastRequestChange("UPDATE", rejected);
+        return ResponseEntity.ok(rejected);
     }
     
     @GetMapping("/stats")

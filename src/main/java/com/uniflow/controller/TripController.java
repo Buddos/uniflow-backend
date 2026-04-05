@@ -2,6 +2,7 @@ package com.uniflow.controller;
 
 import com.uniflow.dto.TripRequestDTO;
 import com.uniflow.model.AcademicTrip;
+import com.uniflow.service.RealtimeService;
 import com.uniflow.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,9 @@ public class TripController {
     
     @Autowired
     private TripService tripService;
+
+    @Autowired
+    private RealtimeService realtimeService;
     
     @GetMapping
     public ResponseEntity<List<Map<String, Object>>> getAllTrips() {
@@ -68,19 +72,24 @@ public class TripController {
         trip.setDescription(tripDTO.getDescription());
         trip.setDepartment(tripDTO.getDepartment());
         
-        return ResponseEntity.ok(tripService.createTrip(trip));
+        AcademicTrip created = tripService.createTrip(trip);
+        realtimeService.broadcastTripChange("CREATE", created);
+        return ResponseEntity.ok(created);
     }
     
     @PutMapping("/{id}/status")
     public ResponseEntity<AcademicTrip> updateTripStatus(
             @PathVariable Long id,
             @RequestParam String status) {
-        return ResponseEntity.ok(tripService.updateTripStatus(id, status));
+        AcademicTrip updated = tripService.updateTripStatus(id, status);
+        realtimeService.broadcastTripChange("UPDATE", updated);
+        return ResponseEntity.ok(updated);
     }
     
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteTrip(@PathVariable Long id) {
         tripService.deleteTrip(id);
+        realtimeService.broadcastTripChange("DELETE", java.util.Map.of("id", id));
         return ResponseEntity.ok().build();
     }
     
