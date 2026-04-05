@@ -16,6 +16,9 @@ public class AuthService {
     
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private DataChangePublisher dataChangePublisher;
     
     public User authenticateUser(String email, String password) {
         Optional<User> userOpt = userRepository.findByEmail(email);
@@ -50,7 +53,9 @@ public class AuthService {
         user.setIsActive(true);
         user.setCreatedAt(LocalDateTime.now());
         
-        return userRepository.save(user);
+        User saved = userRepository.save(user);
+        dataChangePublisher.publishUserCreated(saved);
+        return saved;
     }
     
     public User getUserByEmail(String email) {

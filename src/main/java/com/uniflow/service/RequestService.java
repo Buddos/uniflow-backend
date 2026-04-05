@@ -10,16 +10,24 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 @Service
 public class RequestService {
     
     @Autowired
     private RequestRepository requestRepository;
+
+    @Autowired
+    private DataChangePublisher dataChangePublisher;
     
     public CourseUnitRequest createRequest(CourseUnitRequest request) {
         request.setStatus("PENDING");
         request.setRequestedAt(LocalDateTime.now());
-        return requestRepository.save(request);
+        CourseUnitRequest saved = requestRepository.save(request);
+        if (saved.getCourseUnit() != null) {
+            dataChangePublisher.publishCourseUnitCreated(saved.getCourseUnit());
+        }
+        return saved;
     }
     
     public CourseUnitRequest acceptRequest(Long requestId) {
@@ -28,7 +36,11 @@ public class RequestService {
         
         request.setStatus("ACCEPTED");
         request.setRespondedAt(LocalDateTime.now());
-        return requestRepository.save(request);
+        CourseUnitRequest saved = requestRepository.save(request);
+        if (saved.getCourseUnit() != null) {
+            dataChangePublisher.publishCourseUnitUpdated(saved.getCourseUnit());
+        }
+        return saved;
     }
     
     public CourseUnitRequest rejectRequest(Long requestId, String reason) {
@@ -38,7 +50,11 @@ public class RequestService {
         request.setStatus("REJECTED");
         request.setRejectionReason(reason);
         request.setRespondedAt(LocalDateTime.now());
-        return requestRepository.save(request);
+        CourseUnitRequest saved = requestRepository.save(request);
+        if (saved.getCourseUnit() != null) {
+            dataChangePublisher.publishCourseUnitUpdated(saved.getCourseUnit());
+        }
+        return saved;
     }
     
     public List<CourseUnitRequest> getPendingRequestsForDepartment(String department) {

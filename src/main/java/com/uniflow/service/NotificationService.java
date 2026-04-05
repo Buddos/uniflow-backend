@@ -17,6 +17,9 @@ public class NotificationService {
     
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private DataChangePublisher dataChangePublisher;
     
     public Notification createNotification(Long userId, String title, String message, String type) {
         User user = userRepository.findById(userId)
@@ -30,7 +33,9 @@ public class NotificationService {
         notification.setIsRead(false);
         notification.setCreatedAt(LocalDateTime.now());
         
-        return notificationRepository.save(notification);
+        Notification saved = notificationRepository.save(notification);
+        dataChangePublisher.publishNotificationCreated(saved);
+        return saved;
     }
     
     public List<Notification> getUserNotifications(Long userId) {
@@ -55,7 +60,9 @@ public class NotificationService {
         Notification notification = notificationRepository.findById(notificationId)
             .orElseThrow(() -> new RuntimeException("Notification not found"));
         notification.setIsRead(true);
-        return notificationRepository.save(notification);
+        Notification saved = notificationRepository.save(notification);
+        dataChangePublisher.publishNotificationUpdated(saved);
+        return saved;
     }
     
     public void markAllAsRead(Long userId) {

@@ -15,6 +15,9 @@ public class VenueService {
     
     @Autowired
     private VenueRepository venueRepository;
+
+    @Autowired
+    private DataChangePublisher dataChangePublisher;
     
     public List<Venue> getAllVenues() {
         return venueRepository.findAll();
@@ -27,7 +30,9 @@ public class VenueService {
     public Venue createVenue(Venue venue) {
         // Map fields for frontend compatibility
         mapVenueFields(venue);
-        return venueRepository.save(venue);
+        Venue saved = venueRepository.save(venue);
+        dataChangePublisher.publishVenueCreated(saved);
+        return saved;
     }
     
     public Venue updateVenue(Long id, Venue venueDetails) {
@@ -48,11 +53,14 @@ public class VenueService {
         // Map additional fields
         mapVenueFields(venue);
         
-        return venueRepository.save(venue);
+        Venue saved = venueRepository.save(venue);
+        dataChangePublisher.publishVenueUpdated(saved);
+        return saved;
     }
     
     public void deleteVenue(Long id) {
         venueRepository.deleteById(id);
+        dataChangePublisher.publishVenueDeleted(id);
     }
     
     public List<Venue> getAvailableVenues() {

@@ -17,6 +17,9 @@ public class TripService {
     
     @Autowired
     private TimetableService timetableService;
+
+    @Autowired
+    private DataChangePublisher dataChangePublisher;
     
     public AcademicTrip createTrip(AcademicTrip trip) {
         AcademicTrip savedTrip = tripRepository.save(trip);
@@ -28,6 +31,7 @@ public class TripService {
             trip.getEndDate().toString()
         );
         
+        dataChangePublisher.publishTripCreated(savedTrip);
         return savedTrip;
     }
     
@@ -51,11 +55,14 @@ public class TripService {
     public AcademicTrip updateTripStatus(Long id, String status) {
         AcademicTrip trip = getTripById(id);
         trip.setStatus(status);
-        return tripRepository.save(trip);
+        AcademicTrip saved = tripRepository.save(trip);
+        dataChangePublisher.publishTripUpdated(saved);
+        return saved;
     }
     
     public void deleteTrip(Long id) {
         tripRepository.deleteById(id);
+        dataChangePublisher.publishTripDeleted(id);
     }
     
     public List<AcademicTrip> getUpcomingTrips() {
