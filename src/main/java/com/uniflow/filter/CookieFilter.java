@@ -2,12 +2,12 @@ package com.uniflow.filter;
 
 import com.uniflow.util.CookieUtil;
 import jakarta.servlet.*;
-import jakarta.servlet.annotation.WebFilter;
+import org.springframework.stereotype.Component;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter(filterName = "CookieFilter", urlPatterns = {"/*"})
+@Component
 public class CookieFilter implements Filter {
     
     @Override

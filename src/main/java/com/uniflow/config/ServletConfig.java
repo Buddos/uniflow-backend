@@ -1,114 +1,148 @@
 package com.uniflow.config;
 
 import com.uniflow.servlet.*;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import com.uniflow.filter.SessionFilter;
 import com.uniflow.filter.CookieFilter;
 import com.uniflow.filter.CORSFilter;
-import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import com.uniflow.listener.SessionTrackingListener;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Configuration
 public class ServletConfig {
     
+    @Autowired
+    private AuthServlet authServlet;
+    
+    @Autowired
+    private VenueServlet venueServlet;
+    
+    @Autowired
+    private TimetableServlet timetableServlet;
+    
+    @Autowired
+    private RequestServlet requestServlet;
+    
+    @Autowired
+    private TripServlet tripServlet;
+    
+    @Autowired
+    private BookingServlet bookingServlet;
+    
+    @Autowired
+    private EquipmentServlet equipmentServlet;
+    
+    @Autowired
+    private DashboardServlet dashboardServlet;
+    
+    @Autowired
+    private SessionFilter sessionFilter;
+    
+    @Autowired
+    private CookieFilter cookieFilter;
+    
+    @Autowired
+    private CORSFilter corsFilter;
+    
     @Bean
-    public ServletRegistrationBean<AuthServlet> authServlet() {
+    public ServletRegistrationBean<AuthServlet> registerAuthServlet() {
         ServletRegistrationBean<AuthServlet> registrationBean = new ServletRegistrationBean<>();
-        registrationBean.setServlet(new AuthServlet());
+        registrationBean.setServlet(authServlet);
         registrationBean.addUrlMappings("/servlet/auth/*");
         registrationBean.setLoadOnStartup(1);
         return registrationBean;
     }
     
     @Bean
-    public ServletRegistrationBean<VenueServlet> venueServlet() {
+    public ServletRegistrationBean<VenueServlet> registerVenueServlet() {
         ServletRegistrationBean<VenueServlet> registrationBean = new ServletRegistrationBean<>();
-        registrationBean.setServlet(new VenueServlet());
+        registrationBean.setServlet(venueServlet);
         registrationBean.addUrlMappings("/servlet/venues/*");
         registrationBean.setLoadOnStartup(1);
         return registrationBean;
     }
     
     @Bean
-    public ServletRegistrationBean<TimetableServlet> timetableServlet() {
+    public ServletRegistrationBean<TimetableServlet> registerTimetableServlet() {
         ServletRegistrationBean<TimetableServlet> registrationBean = new ServletRegistrationBean<>();
-        registrationBean.setServlet(new TimetableServlet());
+        registrationBean.setServlet(timetableServlet);
         registrationBean.addUrlMappings("/servlet/timetable/*");
         return registrationBean;
     }
     
     @Bean
-    public ServletRegistrationBean<RequestServlet> requestServlet() {
+    public ServletRegistrationBean<RequestServlet> registerRequestServlet() {
         ServletRegistrationBean<RequestServlet> registrationBean = new ServletRegistrationBean<>();
-        registrationBean.setServlet(new RequestServlet());
+        registrationBean.setServlet(requestServlet);
         registrationBean.addUrlMappings("/servlet/requests/*");
         return registrationBean;
     }
     
     @Bean
-    public ServletRegistrationBean<TripServlet> tripServlet() {
+    public ServletRegistrationBean<TripServlet> registerTripServlet() {
         ServletRegistrationBean<TripServlet> registrationBean = new ServletRegistrationBean<>();
-        registrationBean.setServlet(new TripServlet());
+        registrationBean.setServlet(tripServlet);
         registrationBean.addUrlMappings("/servlet/trips/*");
         return registrationBean;
     }
     
     @Bean
-    public ServletRegistrationBean<BookingServlet> bookingServlet() {
+    public ServletRegistrationBean<BookingServlet> registerBookingServlet() {
         ServletRegistrationBean<BookingServlet> registrationBean = new ServletRegistrationBean<>();
-        registrationBean.setServlet(new BookingServlet());
+        registrationBean.setServlet(bookingServlet);
         registrationBean.addUrlMappings("/servlet/bookings/*");
         return registrationBean;
     }
     
     @Bean
-    public ServletRegistrationBean<EquipmentServlet> equipmentServlet() {
+    public ServletRegistrationBean<EquipmentServlet> registerEquipmentServlet() {
         ServletRegistrationBean<EquipmentServlet> registrationBean = new ServletRegistrationBean<>();
-        registrationBean.setServlet(new EquipmentServlet());
+        registrationBean.setServlet(equipmentServlet);
         registrationBean.addUrlMappings("/servlet/equipment/*");
         return registrationBean;
     }
     
     @Bean
-    public ServletRegistrationBean<DashboardServlet> dashboardServlet() {
+    public ServletRegistrationBean<DashboardServlet> registerDashboardServlet() {
         ServletRegistrationBean<DashboardServlet> registrationBean = new ServletRegistrationBean<>();
-        registrationBean.setServlet(new DashboardServlet());
+        registrationBean.setServlet(dashboardServlet);
         registrationBean.addUrlMappings("/servlet/dashboard/*");
         return registrationBean;
     }
     
     @Bean
-    public FilterRegistrationBean<SessionFilter> sessionFilter() {
+    public FilterRegistrationBean<SessionFilter> registerSessionFilter() {
         FilterRegistrationBean<SessionFilter> registrationBean = new FilterRegistrationBean<>();
-        registrationBean.setFilter(new SessionFilter());
+        registrationBean.setFilter(sessionFilter);
         registrationBean.addUrlPatterns("/servlet/*");
         registrationBean.setOrder(1);
         return registrationBean;
     }
     
     @Bean
-    public FilterRegistrationBean<CookieFilter> cookieFilter() {
+    public FilterRegistrationBean<CookieFilter> registerCookieFilter() {
         FilterRegistrationBean<CookieFilter> registrationBean = new FilterRegistrationBean<>();
-        registrationBean.setFilter(new CookieFilter());
+        registrationBean.setFilter(cookieFilter);
         registrationBean.addUrlPatterns("/*");
         registrationBean.setOrder(2);
         return registrationBean;
     }
     
     @Bean
-    public FilterRegistrationBean<CORSFilter> corsFilter() {
+    public FilterRegistrationBean<CORSFilter> registerCorsFilter() {
         FilterRegistrationBean<CORSFilter> registrationBean = new FilterRegistrationBean<>();
-        registrationBean.setFilter(new CORSFilter());
+        registrationBean.setFilter(corsFilter);
         registrationBean.addUrlPatterns("/*");
         registrationBean.setOrder(0);
         return registrationBean;
     }
     
     @Bean
-    public ServletListenerRegistrationBean<SessionTrackingListener> sessionListener() {
+    public ServletListenerRegistrationBean<SessionTrackingListener> registerSessionListener() {
         ServletListenerRegistrationBean<SessionTrackingListener> registrationBean = new ServletListenerRegistrationBean<>();
         registrationBean.setListener(new SessionTrackingListener());
         return registrationBean;

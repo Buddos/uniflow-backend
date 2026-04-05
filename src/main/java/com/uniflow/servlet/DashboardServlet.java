@@ -5,7 +5,6 @@ import com.uniflow.service.*;
 import com.uniflow.util.SessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,7 +13,6 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(name = "DashboardServlet", urlPatterns = {"/servlet/dashboard/*"})
 @Component
 public class DashboardServlet extends HttpServlet {
     

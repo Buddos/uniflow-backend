@@ -1,12 +1,12 @@
 package com.uniflow.filter;
 
 import jakarta.servlet.*;
-import jakarta.servlet.annotation.WebFilter;
+import org.springframework.stereotype.Component;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter(filterName = "CORSFilter", urlPatterns = {"/*"})
+@Component
 public class CORSFilter implements Filter {
     
     @Override
