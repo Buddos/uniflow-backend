@@ -4,6 +4,7 @@ import com.uniflow.model.Venue;
 import com.uniflow.repository.VenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -83,7 +84,7 @@ public class VenueService {
         stats.put("total", getTotalVenues());
         stats.put("available", getAvailableVenuesCount());
         stats.put("occupied", getOccupiedVenues());
-        stats.put("maintenance", venueRepository.findByStatus("MAINTENANCE").size());
+        stats.put("maintenance", (long) venueRepository.findByStatus("MAINTENANCE").size());
         return stats;
     }
     

@@ -26,7 +26,7 @@ public class RequestController {
     
     @GetMapping
     public ResponseEntity<List<Map<String, Object>>> getAllRequests() {
-        List<CourseUnitRequest> requests = requestService.getRequestsByStatus("ALL");
+        List<CourseUnitRequest> requests = requestService.getAllRequests();
         List<Map<String, Object>> courseRequests = requests.stream().map(request -> {
             Map<String, Object> cr = new HashMap<>();
             cr.put("id", request.getId().toString());
@@ -41,7 +41,7 @@ public class RequestController {
             cr.put("providingDepartment", request.getProvidingDepartment());
             cr.put("cohortSize", request.getExpectedStudents());
             cr.put("status", request.getStatus() != null ? request.getStatus().toLowerCase() : "pending");
-            cr.put("createdAt", request.getCreatedAt() != null ? request.getCreatedAt().toString() : "2026-03-20");
+            cr.put("createdAt", request.getRequestedAt() != null ? request.getRequestedAt().toString() : "2026-03-20");
             return cr;
         }).collect(Collectors.toList());
         return ResponseEntity.ok(courseRequests);

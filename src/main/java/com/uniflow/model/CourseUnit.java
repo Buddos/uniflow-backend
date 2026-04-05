@@ -1,6 +1,6 @@
 package com.uniflow.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +58,8 @@ public class CourseUnit {
     
     public Integer getCredits() { return credits; }
     public void setCredits(Integer credits) { this.credits = credits; }
+    
+    public Integer getCreditHours() { return credits; }
     
     public Boolean getIsCore() { return isCore; }
     public void setIsCore(Boolean isCore) { this.isCore = isCore; }

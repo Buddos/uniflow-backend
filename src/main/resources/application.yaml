@@ -17,6 +17,14 @@ spring:
     username: ${PGUSER:postgres}
     password: ${PGPASSWORD:qRQmGXbLjWAfydROvUkfsTqZsjDgpcgI}
     driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      pool-name: UniFlowHikariPool
+  
   jpa:
     hibernate:
       ddl-auto: update
@@ -25,8 +33,103 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+        jdbc:
+          batch_size: 20
+        order_inserts: true
+        order_updates: true
+    open-in-view: false
+  
+  # Servlet multipart configuration for file uploads
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  
+  # Jackson configuration
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    time-zone: UTC
 
 logging:
   level:
     com.uniflow: DEBUG
     org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.hibernate: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/uniflow.log
+    max-size: 10MB
+    max-history: 30
+
+# UniFlow specific configuration
+uniflow:
+  session:
+    timeout-minutes: 30
+  capacity:
+    buffer-percentage: 10
+    # 110% capacity rule
+    enable-110-percent-rule: true
+  timetable:
+    generation-days-before-semester: 7
+    max-conflict-resolution-attempts: 100
+  makeup:
+    max-requests-per-week: 3
+    advance-booking-days: 14
+  equipment:
+    return-timeout-hours: 24
+    enable-digital-voucher: true
+  notifications:
+    max-per-user: 100
+    retention-days: 30
+
+# CORS Configuration
+cors:
+  allowed-origins:
+    - https://uniflow-frontend.railway.app
+    - http://localhost:3000
+    - http://localhost:5173
+  allowed-methods:
+    - GET
+    - POST
+    - PUT
+    - DELETE
+    - PATCH
+    - OPTIONS
+  allowed-headers:
+    - "*"
+  allow-credentials: true
+  max-age: 3600
+
+# Actuator endpoints (for monitoring on Railway)
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,env
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+  info:
+    env:
+      enabled: true
+  metrics:
+    export:
+      simple:
+        enabled: true
+
+# Info endpoint custom data
+info:
+  app:
+    name: UniFlow System
+    version: 1.0.0
+    description: Collaborative Academic Requirements System (CARS 2.0)
+    environment: ${ENVIRONMENT:production}

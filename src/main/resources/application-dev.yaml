@@ -1,0 +1,58 @@
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 60m
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/uniflow_dev_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+logging:
+  level:
+    com.uniflow: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+
+uniflow:
+  session:
+    timeout-minutes: 60
+  capacity:
+    buffer-percentage: 10
+    enable-110-percent-rule: true
+  timetable:
+    generation-days-before-semester: 7
+  makeup:
+    max-requests-per-week: 3
+  equipment:
+    return-timeout-hours: 24
+    enable-digital-voucher: true
+
+cors:
+  allowed-origins:
+    - http://localhost:3000
+    - http://localhost:5173
+  allowed-methods:
+    - GET
+    - POST
+    - PUT
+    - DELETE
+    - PATCH
+    - OPTIONS
+  allowed-headers:
+    - "*"
+  allow-credentials: true
+  max-age: 3600

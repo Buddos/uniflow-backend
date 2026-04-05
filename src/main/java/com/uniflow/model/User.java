@@ -1,6 +1,6 @@
 package com.uniflow.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class User {
     private String name;
     
     @Column(nullable = false)
-    private String role; // ADMIN, COD, LECTURER
+    private String role;
     
     private String department;
     

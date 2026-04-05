@@ -1,6 +1,6 @@
 package com.uniflow.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +21,7 @@ public class Venue {
     
     private Integer floor;
     
-    private String location;
-    
-    @ElementCollection
-    private List<String> equipment = new ArrayList<>();
-    
-    private String resourceHome;
+    private String equipmentHome;
     
     private Boolean hasProjector = false;
     
@@ -34,11 +29,20 @@ public class Venue {
     
     private Boolean hasAC = false;
     
-    private String status = "AVAILABLE"; // AVAILABLE, BOOKED, MAINTENANCE
+    private String status = "AVAILABLE";
     
     private Double latitude;
     
     private Double longitude;
+    
+    private String location;
+    
+    @ElementCollection
+    @CollectionTable(name = "venue_equipment", joinColumns = @JoinColumn(name = "venue_id"))
+    @Column(name = "equipment_name")
+    private List<String> equipment = new ArrayList<>();
+    
+    private String resourceHome;
     
     private String description;
     
@@ -79,14 +83,8 @@ public class Venue {
     public Integer getFloor() { return floor; }
     public void setFloor(Integer floor) { this.floor = floor; }
     
-    public String getLocation() { return location; }
-    public void setLocation(String location) { this.location = location; }
-    
-    public List<String> getEquipment() { return equipment; }
-    public void setEquipment(List<String> equipment) { this.equipment = equipment; }
-    
-    public String getResourceHome() { return resourceHome; }
-    public void setResourceHome(String resourceHome) { this.resourceHome = resourceHome; }
+    public String getEquipmentHome() { return equipmentHome; }
+    public void setEquipmentHome(String equipmentHome) { this.equipmentHome = equipmentHome; }
     
     public Boolean getHasProjector() { return hasProjector; }
     public void setHasProjector(Boolean hasProjector) { this.hasProjector = hasProjector; }
@@ -108,6 +106,15 @@ public class Venue {
     
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
+    
+    public String getLocation() { return location; }
+    public void setLocation(String location) { this.location = location; }
+    
+    public List<String> getEquipment() { return equipment; }
+    public void setEquipment(List<String> equipment) { this.equipment = equipment; }
+    
+    public String getResourceHome() { return resourceHome; }
+    public void setResourceHome(String resourceHome) { this.resourceHome = resourceHome; }
     
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
