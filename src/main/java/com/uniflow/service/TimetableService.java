@@ -24,6 +24,9 @@ public class TimetableService {
     
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private DataChangePublisher dataChangePublisher;
     
     public List<TimetableEntry> getAllTimetableEntries() {
         return timetableRepository.findAll();
@@ -45,7 +48,9 @@ public class TimetableService {
             entry.setColorCode(getDepartmentColor(department));
         }
         
-        return timetableRepository.save(entry);
+        TimetableEntry saved = timetableRepository.save(entry);
+        dataChangePublisher.publishTimetableEntryCreated(saved);
+        return saved;
     }
     
     public List<TimetableEntry> getLecturerTimetable(Long lecturerId) {
@@ -72,11 +77,13 @@ public class TimetableService {
         List<TimetableEntry> entries = timetableRepository.findByCohortAndAcademicYearAndSemester(cohort, "2024", "1");
         for (TimetableEntry entry : entries) {
             entry.setStatus("CANCELLED");
-            timetableRepository.save(entry);
+            TimetableEntry saved = timetableRepository.save(entry);
+            dataChangePublisher.publishTimetableEntryUpdated(saved);
             
             Venue venue = entry.getVenue();
             venue.setStatus("AVAILABLE");
-            venueRepository.save(venue);
+            Venue savedVenue = venueRepository.save(venue);
+            dataChangePublisher.publishVenueUpdated(savedVenue);
         }
     }
     

@@ -24,6 +24,9 @@ public class BookingService {
     
     @Autowired
     private VenueRepository venueRepository;
+
+    @Autowired
+    private DataChangePublisher dataChangePublisher;
     
     public Booking createBooking(Booking booking) {
         // Check for conflicts
@@ -45,7 +48,9 @@ public class BookingService {
         venue.setStatus("BOOKED");
         venueRepository.save(venue);
         
-        return bookingRepository.save(booking);
+        Booking saved = bookingRepository.save(booking);
+        dataChangePublisher.publishBookingCreated(saved);
+        return saved;
     }
     
     public List<Booking> getAllBookings() {
@@ -75,7 +80,9 @@ public class BookingService {
         venue.setStatus("AVAILABLE");
         venueRepository.save(venue);
         
-        return bookingRepository.save(booking);
+        Booking saved = bookingRepository.save(booking);
+        dataChangePublisher.publishBookingUpdated(saved);
+        return saved;
     }
     
     public List<Booking> getAvailableVenuesForMakeupClass(LocalDateTime startTime, LocalDateTime endTime) {
