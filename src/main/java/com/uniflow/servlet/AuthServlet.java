@@ -33,6 +33,8 @@ public class AuthServlet extends HttpServlet {
         try {
             if ("/login".equals(path)) {
                 handleLogin(request, response, out);
+            } else if ("/register".equals(path)) {
+                handleRegister(request, response, out);
             } else if ("/logout".equals(path)) {
                 handleLogout(request, response, out);
             } else {
@@ -43,6 +45,29 @@ public class AuthServlet extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             out.write("{\"error\": \"" + e.getMessage() + "\"}");
         }
+    }
+    
+    private void handleRegister(HttpServletRequest request, HttpServletResponse response, PrintWriter out) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        BufferedReader reader = request.getReader();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            sb.append(line);
+        }
+        
+        User user = objectMapper.readValue(sb.toString(), User.class);
+        User registeredUser = authService.register(user);
+        
+        Map<String, Object> responseData = new HashMap<>();
+        responseData.put("success", true);
+        responseData.put("user", Map.of(
+            "id", registeredUser.getId(),
+            "name", registeredUser.getName(),
+            "email", registeredUser.getEmail(),
+            "role", registeredUser.getRole()
+        ));
+        
+        out.write(objectMapper.writeValueAsString(responseData));
     }
     
     private void handleLogin(HttpServletRequest request, HttpServletResponse response, PrintWriter out) throws IOException {

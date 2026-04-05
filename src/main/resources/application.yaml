@@ -13,7 +13,8 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://${PGHOST:metro.proxy.rlwy.net}:${PGPORT:43329}/${POSTGRES_DB:railway}
+    # Use SPRING_DATASOURCE_URL or jdbc:DATABASE_URL if available, otherwise construct from components
+    url: ${SPRING_DATASOURCE_URL:jdbc:${DATABASE_URL:postgresql://${PGHOST:metro.proxy.rlwy.net}:${PGPORT:43329}/${PGDATABASE:railway}}}
     username: ${PGUSER:postgres}
     password: ${PGPASSWORD:qRQmGXbLjWAfydROvUkfsTqZsjDgpcgI}
     driver-class-name: org.postgresql.Driver
@@ -91,6 +92,7 @@ uniflow:
 # CORS Configuration
 cors:
   allowed-origins:
+    - https://uniflow-app-livid.vercel.app
     - https://uniflow-frontend.railway.app
     - http://localhost:3000
     - http://localhost:5173

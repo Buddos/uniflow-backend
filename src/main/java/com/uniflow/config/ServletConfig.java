@@ -52,7 +52,7 @@ public class ServletConfig {
     public ServletRegistrationBean<AuthServlet> registerAuthServlet() {
         ServletRegistrationBean<AuthServlet> registrationBean = new ServletRegistrationBean<>();
         registrationBean.setServlet(authServlet);
-        registrationBean.addUrlMappings("/servlet/auth/*");
+        registrationBean.addUrlMappings("/api/auth/*");
         registrationBean.setLoadOnStartup(1);
         return registrationBean;
     }
@@ -61,7 +61,7 @@ public class ServletConfig {
     public ServletRegistrationBean<VenueServlet> registerVenueServlet() {
         ServletRegistrationBean<VenueServlet> registrationBean = new ServletRegistrationBean<>();
         registrationBean.setServlet(venueServlet);
-        registrationBean.addUrlMappings("/servlet/venues/*");
+        registrationBean.addUrlMappings("/api/venues/*");
         registrationBean.setLoadOnStartup(1);
         return registrationBean;
     }
@@ -70,7 +70,7 @@ public class ServletConfig {
     public ServletRegistrationBean<TimetableServlet> registerTimetableServlet() {
         ServletRegistrationBean<TimetableServlet> registrationBean = new ServletRegistrationBean<>();
         registrationBean.setServlet(timetableServlet);
-        registrationBean.addUrlMappings("/servlet/timetable/*");
+        registrationBean.addUrlMappings("/api/timetable/*");
         return registrationBean;
     }
     
@@ -78,7 +78,7 @@ public class ServletConfig {
     public ServletRegistrationBean<RequestServlet> registerRequestServlet() {
         ServletRegistrationBean<RequestServlet> registrationBean = new ServletRegistrationBean<>();
         registrationBean.setServlet(requestServlet);
-        registrationBean.addUrlMappings("/servlet/requests/*");
+        registrationBean.addUrlMappings("/api/requests/*");
         return registrationBean;
     }
     
@@ -86,7 +86,7 @@ public class ServletConfig {
     public ServletRegistrationBean<TripServlet> registerTripServlet() {
         ServletRegistrationBean<TripServlet> registrationBean = new ServletRegistrationBean<>();
         registrationBean.setServlet(tripServlet);
-        registrationBean.addUrlMappings("/servlet/trips/*");
+        registrationBean.addUrlMappings("/api/trips/*");
         return registrationBean;
     }
     
@@ -94,7 +94,7 @@ public class ServletConfig {
     public ServletRegistrationBean<BookingServlet> registerBookingServlet() {
         ServletRegistrationBean<BookingServlet> registrationBean = new ServletRegistrationBean<>();
         registrationBean.setServlet(bookingServlet);
-        registrationBean.addUrlMappings("/servlet/bookings/*");
+        registrationBean.addUrlMappings("/api/bookings/*");
         return registrationBean;
     }
     
@@ -102,7 +102,7 @@ public class ServletConfig {
     public ServletRegistrationBean<EquipmentServlet> registerEquipmentServlet() {
         ServletRegistrationBean<EquipmentServlet> registrationBean = new ServletRegistrationBean<>();
         registrationBean.setServlet(equipmentServlet);
-        registrationBean.addUrlMappings("/servlet/equipment/*");
+        registrationBean.addUrlMappings("/api/equipment/*");
         return registrationBean;
     }
     
@@ -110,7 +110,7 @@ public class ServletConfig {
     public ServletRegistrationBean<DashboardServlet> registerDashboardServlet() {
         ServletRegistrationBean<DashboardServlet> registrationBean = new ServletRegistrationBean<>();
         registrationBean.setServlet(dashboardServlet);
-        registrationBean.addUrlMappings("/servlet/dashboard/*");
+        registrationBean.addUrlMappings("/api/dashboard/*");
         return registrationBean;
     }
     
@@ -118,7 +118,7 @@ public class ServletConfig {
     public FilterRegistrationBean<SessionFilter> registerSessionFilter() {
         FilterRegistrationBean<SessionFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(sessionFilter);
-        registrationBean.addUrlPatterns("/servlet/*");
+        registrationBean.addUrlPatterns("/api/*");
         registrationBean.setOrder(1);
         return registrationBean;
     }

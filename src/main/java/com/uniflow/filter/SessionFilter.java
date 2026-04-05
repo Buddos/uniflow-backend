@@ -14,7 +14,6 @@ import java.util.List;
 public class SessionFilter implements Filter {
     
     private static final List<String> PUBLIC_PATHS = Arrays.asList(
-        "/servlet/auth/login",
         "/api/auth/login",
         "/api/auth/register"
     );
