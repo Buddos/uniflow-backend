@@ -16,8 +16,7 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
-public class AuthServlet extends HttpServlet {
+public class AuthenticationServlet extends HttpServlet {
     
     @Autowired
     private AuthService authService;
