@@ -1,5 +1,6 @@
+# Local Development Environment - Uses Railway Database
 server:
-  port: ${PORT:8081}
+  port: 8081
   address: localhost
   servlet:
     context-path: /
@@ -19,7 +20,7 @@ server:
 
 spring:
   datasource:
-    # Prepend jdbc explicitly for direct Spring Boot compatibility
+    # Railway Database Connection
     url: ${DATABASE_URL:jdbc:postgresql://metro.proxy.rlwy.net:43329/railway}
     username: ${PGUSER:postgres}
     password: ${PGPASSWORD:qRQmGXbLjWAfydROvUkfsTqZsjDgpcgI}
@@ -35,7 +36,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -46,13 +47,11 @@ spring:
         order_updates: true
     open-in-view: false
   
-  # Servlet multipart configuration for file uploads
   servlet:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
   
-  # Jackson configuration
   jackson:
     serialization:
       write-dates-as-timestamps: false
@@ -64,23 +63,14 @@ logging:
     org.springframework.web: INFO
     org.springframework.security: INFO
     org.hibernate: INFO
-    org.hibernate.SQL: DEBUG
-    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
-    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
-  file:
-    name: logs/uniflow.log
-    max-size: 10MB
-    max-history: 30
 
-# UniFlow specific configuration
 uniflow:
   session:
     timeout-minutes: 30
   capacity:
     buffer-percentage: 10
-    # 110% capacity rule
     enable-110-percent-rule: true
   timetable:
     generation-days-before-semester: 7
@@ -94,50 +84,3 @@ uniflow:
   notifications:
     max-per-user: 100
     retention-days: 30
-
-# CORS Configuration
-cors:
-  allowed-origins:
-    - https://uniflow-app-livid.vercel.app
-    - https://uniflow-frontend.railway.app
-    - http://localhost:3000
-    - http://localhost:5173
-  allowed-methods:
-    - GET
-    - POST
-    - PUT
-    - DELETE
-    - PATCH
-    - OPTIONS
-  allowed-headers:
-    - "*"
-  allow-credentials: true
-  max-age: 3600
-
-# Actuator endpoints (for monitoring on Railway)
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,metrics,env
-      base-path: /actuator
-  endpoint:
-    health:
-      show-details: always
-      probes:
-        enabled: true
-  info:
-    env:
-      enabled: true
-  metrics:
-    export:
-      simple:
-        enabled: true
-
-# Info endpoint custom data
-info:
-  app:
-    name: UniFlow System
-    version: 1.0.0
-    description: Collaborative Academic Requirements System (CARS 2.0)
-    environment: ${ENVIRONMENT:production}
