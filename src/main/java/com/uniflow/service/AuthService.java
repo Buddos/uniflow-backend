@@ -18,7 +18,12 @@ public class AuthService {
     private PasswordEncoder passwordEncoder;
     
     public User authenticateUser(String email, String password) {
-        Optional<User> userOpt = userRepository.findByEmail(email);
+        if (email == null || password == null) {
+            return null;
+        }
+
+        String normalizedEmail = email.trim().toLowerCase();
+        Optional<User> userOpt = userRepository.findByEmail(normalizedEmail);
         
         if (userOpt.isEmpty()) {
             return null;
@@ -42,6 +47,13 @@ public class AuthService {
     }
     
     public User register(User user) {
+        if (user == null || user.getEmail() == null) {
+            throw new RuntimeException("Invalid registration data");
+        }
+
+        String normalizedEmail = user.getEmail().trim().toLowerCase();
+        user.setEmail(normalizedEmail);
+
         if (userRepository.existsByEmail(user.getEmail())) {
             throw new RuntimeException("Email already exists");
         }

@@ -1,6 +1,6 @@
 server:
   port: ${PORT:8081}
-  address: localhost
+  address: 0.0.0.0
   servlet:
     context-path: /
     session:
@@ -101,6 +101,7 @@ cors:
     - https://uniflow-app-livid.vercel.app
     - https://uniflow-frontend.railway.app
     - http://localhost:3000
+    - http://localhost:3001
     - http://localhost:5173
   allowed-methods:
     - GET

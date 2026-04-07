@@ -42,7 +42,7 @@ public class AuthenticationServlet extends HttpServlet {
             }
         } catch (Exception e) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            out.write("{\"error\": \"" + e.getMessage() + "\"}");
+            out.write(objectMapper.writeValueAsString(Map.of("error", e.getMessage())));
         }
     }
     
@@ -56,15 +56,18 @@ public class AuthenticationServlet extends HttpServlet {
         
         User user = objectMapper.readValue(sb.toString(), User.class);
         User registeredUser = authService.register(user);
+        SessionUtil.createSession(request, registeredUser);
+        CookieUtil.createSessionCookie(response, request.getSession().getId());
         
         Map<String, Object> responseData = new HashMap<>();
         responseData.put("success", true);
-        responseData.put("user", Map.of(
-            "id", registeredUser.getId(),
-            "name", registeredUser.getName(),
-            "email", registeredUser.getEmail(),
-            "role", registeredUser.getRole()
-        ));
+        Map<String, Object> userMap = new HashMap<>();
+        userMap.put("id", registeredUser.getId());
+        userMap.put("name", registeredUser.getName());
+        userMap.put("email", registeredUser.getEmail());
+        userMap.put("role", registeredUser.getRole());
+        userMap.put("department", registeredUser.getDepartment());
+        responseData.put("user", userMap);
         
         out.write(objectMapper.writeValueAsString(responseData));
     }
@@ -76,27 +79,28 @@ public class AuthenticationServlet extends HttpServlet {
         while ((line = reader.readLine()) != null) {
             sb.append(line);
         }
-        
+
         Map<String, String> loginData = objectMapper.readValue(sb.toString(), Map.class);
         User user = authService.authenticateUser(loginData.get("email"), loginData.get("password"));
-        
+
         if (user != null) {
             SessionUtil.createSession(request, user);
             CookieUtil.createSessionCookie(response, request.getSession().getId());
-            
+
             Map<String, Object> responseData = new HashMap<>();
             responseData.put("success", true);
-            responseData.put("user", Map.of(
-                "id", user.getId(),
-                "name", user.getName(),
-                "email", user.getEmail(),
-                "role", user.getRole()
-            ));
-            
+            Map<String, Object> userMap = new HashMap<>();
+            userMap.put("id", user.getId());
+            userMap.put("name", user.getName());
+            userMap.put("email", user.getEmail());
+            userMap.put("role", user.getRole());
+            userMap.put("department", user.getDepartment());
+            responseData.put("user", userMap);
+
             out.write(objectMapper.writeValueAsString(responseData));
         } else {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            out.write("{\"error\": \"Invalid credentials\"}");
+            out.write(objectMapper.writeValueAsString(Map.of("error", "Invalid credentials")));
         }
     }
     

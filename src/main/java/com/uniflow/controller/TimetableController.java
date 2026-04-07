@@ -31,25 +31,24 @@ public class TimetableController {
             Map<String, Object> slot = new HashMap<>();
             slot.put("id", entry.getId().toString());
             slot.put("day", entry.getDayOfWeek());
-            slot.put("startTime", entry.getStartTime().toString());
-            slot.put("endTime", entry.getEndTime().toString());
-            slot.put("courseUnit", Map.of(
-                "id", entry.getCourseUnit().getId().toString(),
-                "code", entry.getCourseUnit().getCode(),
-                "name", entry.getCourseUnit().getName(),
-                "department", entry.getCourseUnit().getDepartment(),
-                "creditHours", entry.getCourseUnit().getCreditHours()
-            ));
-            slot.put("venue", Map.of(
-                "id", entry.getVenue().getId().toString(),
-                "name", entry.getVenue().getName(),
-                "capacity", entry.getVenue().getCapacity(),
-                "location", entry.getVenue().getLocation() != null ? entry.getVenue().getLocation() : "Main Campus",
-                "building", entry.getVenue().getBuilding(),
-                "equipment", entry.getVenue().getEquipment() != null ? entry.getVenue().getEquipment() : new ArrayList<String>(),
-                "resourceHome", entry.getVenue().getResourceHome() != null ? entry.getVenue().getResourceHome() : entry.getVenue().getEquipmentHome(),
-                "status", entry.getVenue().getStatus() != null ? entry.getVenue().getStatus().toLowerCase() : "available"
-            ));
+            
+            // Format time slot as "HH:MM - HH:MM"
+            String timeSlot = entry.getStartTime() != null && entry.getEndTime() != null
+                ? entry.getStartTime().toString().substring(0, 5) + " - " + entry.getEndTime().toString().substring(0, 5)
+                : "TBD";
+            slot.put("timeSlot", timeSlot);
+            
+            // Flatten course unit - return name and code as strings
+            slot.put("courseUnit", entry.getCourseUnit() != null ? entry.getCourseUnit().getName() : "Unknown");
+            slot.put("courseCode", entry.getCourseUnit() != null ? entry.getCourseUnit().getCode() : "");
+            
+            // Flatten venue - return name as string
+            slot.put("venue", entry.getVenue() != null ? entry.getVenue().getName() : "Unknown");
+            
+            // Cohort size - use venue capacity as proxy if not available
+            slot.put("cohortSize", entry.getVenue() != null ? entry.getVenue().getCapacity() : 0);
+            
+            // Keep lecturer and department as strings
             slot.put("lecturer", entry.getLecturer() != null ? entry.getLecturer().getName() : "Unknown");
             slot.put("department", entry.getLecturer() != null ? entry.getLecturer().getDepartment() : "Unknown");
             slot.put("color", entry.getColorCode() != null ? entry.getColorCode() : "#3b82f6");

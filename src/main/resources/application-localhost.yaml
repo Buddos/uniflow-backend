@@ -1,7 +1,7 @@
 # Local Development Environment - Uses Railway Database
 server:
-  port: 8081
-  address: localhost
+  port: ${PORT:8081}
+  address: 0.0.0.0
   servlet:
     context-path: /
     session:

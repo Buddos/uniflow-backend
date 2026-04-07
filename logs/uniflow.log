@@ -234,3 +234,2136 @@ Action:
 
 Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
 
+2026-04-07 11:03:24 [main] INFO  com.uniflow.UniflowApplication - Starting UniflowApplication using Java 21.0.10 with PID 23792 (C:\Users\bonface\Documents\uniflow\uniflow-backend\target\classes started by bonface in C:\Users\bonface\Documents\uniflow\uniflow-backend)
+2026-04-07 11:03:24 [main] DEBUG com.uniflow.UniflowApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-07 11:03:24 [main] INFO  com.uniflow.UniflowApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-07 11:03:29 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-07 11:03:30 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 459 ms. Found 9 JPA repository interfaces.
+2026-04-07 11:03:34 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-07 11:03:34 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-07 11:03:34 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-07 11:03:34 [main] INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-07 11:03:34 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-07 11:03:34 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 9972 ms
+2026-04-07 11:03:34 [main] INFO  com.uniflow.config.DatabaseConfig - Initializing DataSource with URL: jdbc:postgresql://metro.proxy.rlwy.net:43329/railway
+2026-04-07 11:03:35 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-07 11:03:35 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-07 11:03:35 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-07 11:03:36 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-07 11:03:36 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Starting...
+2026-04-07 11:03:47 [main] INFO  com.zaxxer.hikari.pool.HikariPool - UniFlowHikariPool - Added connection org.postgresql.jdbc.PgConnection@51e94b7d
+2026-04-07 11:03:47 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Start completed.
+2026-04-07 11:03:48 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-07 11:03:54 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-07 11:04:06 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 11:04:07 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-07 11:04:10 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 272943ae-0064-4be8-94b4-ca9647b43328
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-07 11:04:10 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2fcd0756, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@285d33f3, org.springframework.security.web.context.SecurityContextHolderFilter@69f90fc4, org.springframework.security.web.header.HeaderWriterFilter@1a60b0c4, org.springframework.web.filter.CorsFilter@5b6fd32d, org.springframework.security.web.authentication.logout.LogoutFilter@749aa36f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@328f46f9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2f643a10, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@425436b4, org.springframework.security.web.session.SessionManagementFilter@156d47c5, org.springframework.security.web.access.ExceptionTranslationFilter@7cf9557a, org.springframework.security.web.access.intercept.AuthorizationFilter@20a4f67a]
+2026-04-07 11:04:11 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-04-07 11:04:11 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 11:04:11 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Shutdown initiated...
+2026-04-07 11:04:12 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Shutdown completed.
+2026-04-07 11:04:12 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-07 11:04:12 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2026-04-07 11:07:14 [main] INFO  com.uniflow.UniflowApplication - Starting UniflowApplication using Java 21.0.10 with PID 18356 (C:\Users\bonface\Documents\uniflow\uniflow-backend\target\classes started by bonface in c:\Users\bonface\Documents\uniflow\uniflow-backend)
+2026-04-07 11:07:14 [main] DEBUG com.uniflow.UniflowApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-07 11:07:14 [main] INFO  com.uniflow.UniflowApplication - The following 1 profile is active: "localhost"
+2026-04-07 11:07:18 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-07 11:07:18 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 0, completed tasks = 1]
+2026-04-07 11:07:18 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 235 ms. Found 9 JPA repository interfaces.
+2026-04-07 11:07:23 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-07 11:07:23 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-07 11:07:23 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-07 11:07:24 [main] INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-07 11:07:24 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-07 11:07:24 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 10011 ms
+2026-04-07 11:07:24 [main] INFO  com.uniflow.config.DatabaseConfig - Initializing DataSource with URL: jdbc:postgresql://metro.proxy.rlwy.net:43329/railway
+2026-04-07 11:07:24 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-07 11:07:24 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-07 11:07:24 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-07 11:07:25 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-07 11:07:25 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Starting...
+2026-04-07 11:07:31 [main] INFO  com.zaxxer.hikari.pool.HikariPool - UniFlowHikariPool - Added connection org.postgresql.jdbc.PgConnection@b8b2184
+2026-04-07 11:07:31 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Start completed.
+2026-04-07 11:07:32 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-07 11:07:39 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-07 11:07:48 [main] INFO  com.uniflow.UniflowApplication - Starting UniflowApplication using Java 21.0.10 with PID 14868 (C:\Users\bonface\Documents\uniflow\uniflow-backend\target\classes started by bonface in C:\Users\bonface\Documents\uniflow\uniflow-backend)
+2026-04-07 11:07:48 [main] DEBUG com.uniflow.UniflowApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-07 11:07:48 [main] INFO  com.uniflow.UniflowApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-07 11:07:50 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-07 11:07:50 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 189 ms. Found 9 JPA repository interfaces.
+2026-04-07 11:07:52 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-07 11:07:52 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-07 11:07:52 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-07 11:07:52 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 11:07:52 [main] INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-07 11:07:52 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-07 11:07:52 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3665 ms
+2026-04-07 11:07:52 [main] INFO  com.uniflow.config.DatabaseConfig - Initializing DataSource with URL: jdbc:postgresql://metro.proxy.rlwy.net:43329/railway
+2026-04-07 11:07:52 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-07 11:07:52 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-07 11:07:53 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-07 11:07:53 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-07 11:07:53 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-07 11:07:53 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Starting...
+2026-04-07 11:07:55 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: dffbe186-701c-44ec-bfa7-1a0a7eb0d35e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-07 11:07:56 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7908e69e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@12919b7b, org.springframework.security.web.context.SecurityContextHolderFilter@2f3181d9, org.springframework.security.web.header.HeaderWriterFilter@295692fd, org.springframework.web.filter.CorsFilter@4901ff51, org.springframework.security.web.authentication.logout.LogoutFilter@6d67e03, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c8b15f5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6f54a7be, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3033e54c, org.springframework.security.web.session.SessionManagementFilter@5c5dd9ac, org.springframework.security.web.access.ExceptionTranslationFilter@1b404a21, org.springframework.security.web.access.intercept.AuthorizationFilter@6ef0a044]
+2026-04-07 11:07:57 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-04-07 11:07:57 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 11:07:57 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Shutdown initiated...
+2026-04-07 11:07:58 [main] INFO  com.zaxxer.hikari.pool.HikariPool - UniFlowHikariPool - Added connection org.postgresql.jdbc.PgConnection@2c2aab92
+2026-04-07 11:07:58 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Start completed.
+2026-04-07 11:07:58 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Shutdown completed.
+2026-04-07 11:07:58 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-07 11:07:58 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2026-04-07 11:07:58 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-07 11:08:02 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-07 11:08:13 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 11:08:13 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-07 11:08:15 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: f52cafc7-4d85-4411-a91d-5cbe46576ad5
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-07 11:08:16 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@78835956, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@38794a3, org.springframework.security.web.context.SecurityContextHolderFilter@7d8fcde8, org.springframework.security.web.header.HeaderWriterFilter@3a6732bc, org.springframework.web.filter.CorsFilter@5c00b341, org.springframework.security.web.authentication.logout.LogoutFilter@4f3f8115, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@46916d68, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@79b07ccd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@10658b31, org.springframework.security.web.session.SessionManagementFilter@7e32261f, org.springframework.security.web.access.ExceptionTranslationFilter@30e787e2, org.springframework.security.web.access.intercept.AuthorizationFilter@5415ed48]
+2026-04-07 11:08:16 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-04-07 11:08:16 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 11:08:16 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Shutdown initiated...
+2026-04-07 11:08:18 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Shutdown completed.
+2026-04-07 11:08:18 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-07 11:08:18 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2026-04-07 11:09:57 [main] INFO  com.uniflow.UniflowApplication - Starting UniflowApplication using Java 21.0.10 with PID 15664 (C:\Users\bonface\Documents\uniflow\uniflow-backend\target\classes started by bonface in c:\Users\bonface\Documents\uniflow\uniflow-backend)
+2026-04-07 11:09:57 [main] DEBUG com.uniflow.UniflowApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-07 11:09:57 [main] INFO  com.uniflow.UniflowApplication - The following 1 profile is active: "localhost"
+2026-04-07 11:09:58 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-07 11:09:59 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 250 ms. Found 9 JPA repository interfaces.
+2026-04-07 11:10:00 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-07 11:10:00 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-07 11:10:00 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-07 11:10:01 [main] INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-07 11:10:01 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-07 11:10:01 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3663 ms
+2026-04-07 11:10:01 [main] INFO  com.uniflow.config.DatabaseConfig - Initializing DataSource with URL: jdbc:postgresql://metro.proxy.rlwy.net:43329/railway
+2026-04-07 11:10:01 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-07 11:10:01 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-07 11:10:01 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-07 11:10:01 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-07 11:10:02 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Starting...
+2026-04-07 11:10:07 [main] INFO  com.zaxxer.hikari.pool.HikariPool - UniFlowHikariPool - Added connection org.postgresql.jdbc.PgConnection@63b4b9c6
+2026-04-07 11:10:07 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Start completed.
+2026-04-07 11:10:08 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-07 11:10:11 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-07 11:10:22 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 11:10:22 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-07 11:10:25 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: a595a893-c5f3-4873-9d2a-57f91db4cc7a
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-07 11:10:25 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1d38ca2b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6aa909cb, org.springframework.security.web.context.SecurityContextHolderFilter@1263422a, org.springframework.security.web.header.HeaderWriterFilter@1155ab2c, org.springframework.web.filter.CorsFilter@4be75a68, org.springframework.security.web.authentication.logout.LogoutFilter@434c0d22, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1f79536b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6068e9d9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@747d1e03, org.springframework.security.web.session.SessionManagementFilter@ac51234, org.springframework.security.web.access.ExceptionTranslationFilter@26d68ea4, org.springframework.security.web.access.intercept.AuthorizationFilter@7e913ef1]
+2026-04-07 11:10:26 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+2026-04-07 11:10:26 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2026-04-07 11:10:26 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@df52b26]]
+2026-04-07 11:10:26 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2026-04-07 11:10:26 [main] INFO  com.uniflow.UniflowApplication - Started UniflowApplication in 30.035 seconds (process running for 30.792)
+2026-04-07 11:10:26 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-04-07 11:10:27 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        venues v1_0
+2026-04-07 11:10:27 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        course_units cu1_0
+2026-04-07 11:10:27 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-04-07 11:10:28 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        venues v1_0
+2026-04-07 11:10:28 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        course_units cu1_0
+2026-04-07 11:11:26 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-04-07 11:11:51 [main] INFO  com.uniflow.UniflowApplication - Starting UniflowApplication using Java 21.0.10 with PID 9608 (C:\Users\bonface\Documents\uniflow\uniflow-backend\target\classes started by bonface in C:\Users\bonface\Documents\uniflow\uniflow-backend)
+2026-04-07 11:11:51 [main] DEBUG com.uniflow.UniflowApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-07 11:11:51 [main] INFO  com.uniflow.UniflowApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-07 11:11:53 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-07 11:11:53 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 228 ms. Found 9 JPA repository interfaces.
+2026-04-07 11:11:54 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-07 11:11:54 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-07 11:11:54 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-07 11:11:55 [main] INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-07 11:11:55 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-07 11:11:55 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3544 ms
+2026-04-07 11:11:55 [main] INFO  com.uniflow.config.DatabaseConfig - Initializing DataSource with URL: jdbc:postgresql://metro.proxy.rlwy.net:43329/railway
+2026-04-07 11:11:55 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-07 11:11:55 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-07 11:11:55 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-07 11:11:55 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-07 11:11:56 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Starting...
+2026-04-07 11:12:00 [main] INFO  com.zaxxer.hikari.pool.HikariPool - UniFlowHikariPool - Added connection org.postgresql.jdbc.PgConnection@2c2aab92
+2026-04-07 11:12:00 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Start completed.
+2026-04-07 11:12:00 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-07 11:12:03 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-07 11:12:15 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 11:12:16 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-07 11:12:18 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 1bd56a16-bf6d-4fa1-9ecd-ca12cc5d8263
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-07 11:12:18 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@78835956, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@38794a3, org.springframework.security.web.context.SecurityContextHolderFilter@7d8fcde8, org.springframework.security.web.header.HeaderWriterFilter@3a6732bc, org.springframework.web.filter.CorsFilter@5c00b341, org.springframework.security.web.authentication.logout.LogoutFilter@4f3f8115, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@46916d68, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@79b07ccd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@10658b31, org.springframework.security.web.session.SessionManagementFilter@7e32261f, org.springframework.security.web.access.ExceptionTranslationFilter@30e787e2, org.springframework.security.web.access.intercept.AuthorizationFilter@5415ed48]
+2026-04-07 11:12:20 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-04-07 11:12:20 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 11:12:20 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Shutdown initiated...
+2026-04-07 11:12:21 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Shutdown completed.
+2026-04-07 11:12:22 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-07 11:12:22 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2026-04-07 11:14:28 [main] INFO  com.uniflow.UniflowApplication - Starting UniflowApplication using Java 21.0.10 with PID 17152 (C:\Users\bonface\Documents\uniflow\uniflow-backend\target\classes started by bonface in c:\Users\bonface\Documents\uniflow\uniflow-backend)
+2026-04-07 11:14:28 [main] DEBUG com.uniflow.UniflowApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-07 11:14:28 [main] INFO  com.uniflow.UniflowApplication - The following 1 profile is active: "localhost"
+2026-04-07 11:14:30 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-07 11:14:31 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 203 ms. Found 9 JPA repository interfaces.
+2026-04-07 11:14:32 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-07 11:14:32 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-07 11:14:32 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-07 11:14:33 [main] INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-07 11:14:33 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-07 11:14:33 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4947 ms
+2026-04-07 11:14:33 [main] INFO  com.uniflow.config.DatabaseConfig - Initializing DataSource with URL: jdbc:postgresql://metro.proxy.rlwy.net:43329/railway
+2026-04-07 11:14:34 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-07 11:14:34 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-07 11:14:34 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-07 11:14:35 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-07 11:14:35 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Starting...
+2026-04-07 11:14:40 [main] INFO  com.zaxxer.hikari.pool.HikariPool - UniFlowHikariPool - Added connection org.postgresql.jdbc.PgConnection@6c66ddab
+2026-04-07 11:14:40 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Start completed.
+2026-04-07 11:14:41 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-07 11:14:44 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-07 11:14:56 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 11:14:58 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-07 11:15:00 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 886f41f3-c38d-40be-9dc7-6785c451facc
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-07 11:15:01 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3d97b0a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@20983174, org.springframework.security.web.context.SecurityContextHolderFilter@1ed28f57, org.springframework.security.web.header.HeaderWriterFilter@6385af63, org.springframework.web.filter.CorsFilter@35ab67d4, org.springframework.security.web.authentication.logout.LogoutFilter@6e6d4a64, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2d3697ae, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2a64c8c3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6f1720f8, org.springframework.security.web.session.SessionManagementFilter@1179c778, org.springframework.security.web.access.ExceptionTranslationFilter@64e3d4ab, org.springframework.security.web.access.intercept.AuthorizationFilter@1de7c0ad]
+2026-04-07 11:15:02 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+2026-04-07 11:15:02 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2026-04-07 11:15:02 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@5df744d4]]
+2026-04-07 11:15:02 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2026-04-07 11:15:02 [main] INFO  com.uniflow.UniflowApplication - Started UniflowApplication in 35.371 seconds (process running for 37.075)
+2026-04-07 11:15:02 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-04-07 11:15:02 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        venues v1_0
+2026-04-07 11:15:03 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        course_units cu1_0
+2026-04-07 11:15:03 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-04-07 11:15:04 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        venues v1_0
+2026-04-07 11:15:04 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        course_units cu1_0
+2026-04-07 11:16:01 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-04-07 12:16:44 [main] INFO  com.uniflow.UniflowApplication - Starting UniflowApplication using Java 21.0.10 with PID 2332 (C:\Users\bonface\Documents\uniflow\uniflow-backend\target\classes started by bonface in C:\Users\bonface\Documents\uniflow\uniflow-backend)
+2026-04-07 12:16:44 [main] DEBUG com.uniflow.UniflowApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-07 12:16:44 [main] INFO  com.uniflow.UniflowApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-07 12:16:45 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-07 12:16:46 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 179 ms. Found 9 JPA repository interfaces.
+2026-04-07 12:16:47 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-07 12:16:47 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-07 12:16:47 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-07 12:16:48 [main] INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-07 12:16:48 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-07 12:16:48 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3869 ms
+2026-04-07 12:16:48 [main] INFO  com.uniflow.config.DatabaseConfig - Initializing DataSource with URL: jdbc:postgresql://metro.proxy.rlwy.net:43329/railway
+2026-04-07 12:16:48 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-07 12:16:48 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-07 12:16:48 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-07 12:16:49 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-07 12:16:49 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Starting...
+2026-04-07 12:16:54 [main] INFO  com.zaxxer.hikari.pool.HikariPool - UniFlowHikariPool - Added connection org.postgresql.jdbc.PgConnection@6cee903a
+2026-04-07 12:16:54 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Start completed.
+2026-04-07 12:16:55 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-07 12:16:58 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-07 12:17:11 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 12:17:12 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-07 12:17:14 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 1cb48243-f0da-40cf-9844-63e13b1ece55
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-07 12:17:15 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5b3c2e59, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@64a2966a, org.springframework.security.web.context.SecurityContextHolderFilter@30e787e2, org.springframework.security.web.header.HeaderWriterFilter@37e2873c, org.springframework.web.filter.CorsFilter@127e838b, org.springframework.security.web.authentication.logout.LogoutFilter@5e1fc897, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3a6732bc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@35b799c0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7c7caff1, org.springframework.security.web.session.SessionManagementFilter@40a923e6, org.springframework.security.web.access.ExceptionTranslationFilter@2919976e, org.springframework.security.web.access.intercept.AuthorizationFilter@6b732d6]
+2026-04-07 12:17:16 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+2026-04-07 12:17:16 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2026-04-07 12:17:16 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@6d89f87d]]
+2026-04-07 12:17:16 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2026-04-07 12:17:16 [main] INFO  com.uniflow.UniflowApplication - Started UniflowApplication in 33.308 seconds (process running for 34.143)
+2026-04-07 12:17:16 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-04-07 12:17:16 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        venues v1_0
+2026-04-07 12:17:17 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        course_units cu1_0
+2026-04-07 12:17:17 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-04-07 12:17:17 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        venues v1_0
+2026-04-07 12:17:18 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        course_units cu1_0
+2026-04-07 12:17:21 [http-nio-127.0.0.1-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-07 12:17:21 [http-nio-127.0.0.1-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-07 12:17:21 [http-nio-127.0.0.1-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-04-07 12:18:16 [MessageBroker-8] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 16, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannel[pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 2, completed tasks = 13]
+2026-04-07 12:39:50 [http-nio-127.0.0.1-8081-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-04-07 12:39:51 [http-nio-127.0.0.1-8081-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at,
+        n1_0.user_id,
+        n1_0.id,
+        n1_0.action_url,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.title,
+        n1_0.type 
+    from
+        users u1_0 
+    left join
+        notifications n1_0 
+            on u1_0.id=n1_0.user_id 
+    where
+        u1_0.id=?
+2026-04-07 12:39:51 [http-nio-127.0.0.1-8081-exec-2] DEBUG org.hibernate.SQL - 
+    update
+        users 
+    set
+        created_at=?,
+        department=?,
+        email=?,
+        is_active=?,
+        last_login=?,
+        name=?,
+        password=?,
+        phone_number=?,
+        role=?,
+        updated_at=? 
+    where
+        id=?
+2026-04-07 12:43:16 [http-nio-127.0.0.1-8081-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-04-07 12:43:18 [http-nio-127.0.0.1-8081-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-04-07 12:43:20 [http-nio-127.0.0.1-8081-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-04-07 12:43:20 [http-nio-127.0.0.1-8081-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-04-07 12:43:23 [http-nio-127.0.0.1-8081-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-04-07 12:43:54 [http-nio-127.0.0.1-8081-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+    fetch
+        first ? rows only
+2026-04-07 12:46:14 [http-nio-127.0.0.1-8081-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+    fetch
+        first ? rows only
+2026-04-07 12:46:15 [http-nio-127.0.0.1-8081-exec-7] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        users
+        (created_at, department, email, is_active, last_login, name, password, phone_number, role, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-04-07 12:48:16 [MessageBroker-7] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 7 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(7)-CONNECTED(7)-DISCONNECT(2)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 171], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 15], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 2, completed tasks = 409]
+2026-04-07 12:55:08 [main] INFO  com.uniflow.UniflowApplication - Starting UniflowApplication using Java 21.0.10 with PID 17064 (C:\Users\bonface\Documents\uniflow\uniflow-backend\target\classes started by bonface in c:\Users\bonface\Documents\uniflow\uniflow-backend)
+2026-04-07 12:55:08 [main] DEBUG com.uniflow.UniflowApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-07 12:55:08 [main] INFO  com.uniflow.UniflowApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-07 12:55:10 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-07 12:55:10 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 169 ms. Found 9 JPA repository interfaces.
+2026-04-07 12:55:12 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-07 12:55:12 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-07 12:55:12 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-07 12:55:12 [main] INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-07 12:55:12 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-07 12:55:12 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3895 ms
+2026-04-07 12:55:13 [main] INFO  com.uniflow.config.DatabaseConfig - Initializing DataSource with URL: jdbc:postgresql://metro.proxy.rlwy.net:43329/railway
+2026-04-07 12:55:13 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-07 12:55:13 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-07 12:55:13 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-07 12:55:14 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-07 12:55:14 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Starting...
+2026-04-07 12:55:19 [main] INFO  com.zaxxer.hikari.pool.HikariPool - UniFlowHikariPool - Added connection org.postgresql.jdbc.PgConnection@1308ef19
+2026-04-07 12:55:19 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Start completed.
+2026-04-07 12:55:19 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-07 12:55:23 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-07 12:55:34 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 12:55:34 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-07 12:55:36 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: cdacd2a6-398d-4408-83e9-51a4e8a5baea
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-07 12:55:37 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@64a2966a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@127e838b, org.springframework.security.web.context.SecurityContextHolderFilter@39d8240b, org.springframework.security.web.header.HeaderWriterFilter@dcdf733, org.springframework.web.filter.CorsFilter@7c7caff1, org.springframework.security.web.authentication.logout.LogoutFilter@73c337e9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@35b799c0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3963d003, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@460818c1, org.springframework.security.web.session.SessionManagementFilter@2a153531, org.springframework.security.web.access.ExceptionTranslationFilter@55cbbf15, org.springframework.security.web.access.intercept.AuthorizationFilter@76300346]
+2026-04-07 12:55:38 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-04-07 12:55:38 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 12:55:38 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Shutdown initiated...
+2026-04-07 12:55:39 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Shutdown completed.
+2026-04-07 12:55:39 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-07 12:55:39 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2026-04-07 12:57:43 [main] INFO  com.uniflow.UniflowApplication - Starting UniflowApplication using Java 21.0.10 with PID 19356 (C:\Users\bonface\Documents\uniflow\uniflow-backend\target\classes started by bonface in c:\Users\bonface\Documents\uniflow\uniflow-backend)
+2026-04-07 12:57:43 [main] DEBUG com.uniflow.UniflowApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-07 12:57:43 [main] INFO  com.uniflow.UniflowApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-07 12:57:45 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-07 12:57:45 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 197 ms. Found 9 JPA repository interfaces.
+2026-04-07 12:57:46 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-07 12:57:46 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-07 12:57:46 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-07 12:57:47 [main] INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-07 12:57:47 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-07 12:57:47 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3395 ms
+2026-04-07 12:57:47 [main] INFO  com.uniflow.config.DatabaseConfig - Initializing DataSource with URL: jdbc:postgresql://metro.proxy.rlwy.net:43329/railway
+2026-04-07 12:57:47 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-07 12:57:47 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-07 12:57:47 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-07 12:57:48 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-07 12:57:48 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Starting...
+2026-04-07 12:57:52 [main] INFO  com.zaxxer.hikari.pool.HikariPool - UniFlowHikariPool - Added connection org.postgresql.jdbc.PgConnection@6cee903a
+2026-04-07 12:57:52 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Start completed.
+2026-04-07 12:57:52 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-07 12:57:55 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-07 12:58:08 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 12:58:08 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-07 12:58:11 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: bcc6ae26-cc80-476b-9ec1-e6db83bdc93a
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-07 12:58:11 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5b3c2e59, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@64a2966a, org.springframework.security.web.context.SecurityContextHolderFilter@30e787e2, org.springframework.security.web.header.HeaderWriterFilter@37e2873c, org.springframework.web.filter.CorsFilter@127e838b, org.springframework.security.web.authentication.logout.LogoutFilter@5e1fc897, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3a6732bc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@35b799c0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7c7caff1, org.springframework.security.web.session.SessionManagementFilter@40a923e6, org.springframework.security.web.access.ExceptionTranslationFilter@2919976e, org.springframework.security.web.access.intercept.AuthorizationFilter@6b732d6]
+2026-04-07 12:58:12 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+2026-04-07 12:58:12 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2026-04-07 12:58:12 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@6d89f87d]]
+2026-04-07 12:58:12 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2026-04-07 12:58:12 [main] INFO  com.uniflow.UniflowApplication - Started UniflowApplication in 29.511 seconds (process running for 30.259)
+2026-04-07 12:58:12 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-04-07 12:58:12 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        venues v1_0
+2026-04-07 12:58:13 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        course_units cu1_0
+2026-04-07 12:58:13 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-04-07 12:58:14 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        venues v1_0
+2026-04-07 12:58:14 [http-nio-127.0.0.1-8081-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-07 12:58:14 [http-nio-127.0.0.1-8081-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-07 12:58:14 [http-nio-127.0.0.1-8081-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-04-07 12:58:14 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        course_units cu1_0
+2026-04-07 12:59:12 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 16, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannel[pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 2, completed tasks = 14]
+2026-04-07 12:59:29 [http-nio-127.0.0.1-8081-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-04-07 13:02:50 [main] INFO  com.uniflow.UniflowApplication - Starting UniflowApplication using Java 21.0.10 with PID 3272 (C:\Users\bonface\Documents\uniflow\uniflow-backend\target\classes started by bonface in C:\Users\bonface\Documents\uniflow\uniflow-backend)
+2026-04-07 13:02:50 [main] DEBUG com.uniflow.UniflowApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-07 13:02:50 [main] INFO  com.uniflow.UniflowApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-07 13:02:52 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-07 13:02:52 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 197 ms. Found 9 JPA repository interfaces.
+2026-04-07 13:02:53 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-07 13:02:53 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-07 13:02:53 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-07 13:02:54 [main] INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-07 13:02:54 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-07 13:02:54 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3932 ms
+2026-04-07 13:02:54 [main] INFO  com.uniflow.config.DatabaseConfig - Initializing DataSource with URL: jdbc:postgresql://metro.proxy.rlwy.net:43329/railway
+2026-04-07 13:02:54 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-07 13:02:54 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-07 13:02:55 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-07 13:02:55 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-07 13:02:55 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Starting...
+2026-04-07 13:03:01 [main] INFO  com.zaxxer.hikari.pool.HikariPool - UniFlowHikariPool - Added connection org.postgresql.jdbc.PgConnection@1acc873b
+2026-04-07 13:03:01 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Start completed.
+2026-04-07 13:03:01 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-07 13:03:05 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-07 13:03:16 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 13:03:17 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-07 13:03:19 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 0681ec14-b4b3-4793-9ab5-fe08b1fbdc68
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-07 13:03:20 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3669d7ac, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@506d7831, org.springframework.security.web.context.SecurityContextHolderFilter@41e35358, org.springframework.security.web.header.HeaderWriterFilter@21df2968, org.springframework.web.filter.CorsFilter@497746ea, org.springframework.security.web.authentication.logout.LogoutFilter@15f4f652, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4b628301, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6ca6a1a6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4f3f8115, org.springframework.security.web.session.SessionManagementFilter@3a6732bc, org.springframework.security.web.access.ExceptionTranslationFilter@60319a00, org.springframework.security.web.access.intercept.AuthorizationFilter@127e838b]
+2026-04-07 13:03:20 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-04-07 13:03:20 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 13:03:20 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Shutdown initiated...
+2026-04-07 13:03:22 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Shutdown completed.
+2026-04-07 13:03:22 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-04-07 13:03:22 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2026-04-07 13:10:44 [main] INFO  com.uniflow.UniflowApplication - Starting UniflowApplication using Java 21.0.10 with PID 14368 (C:\Users\bonface\Documents\uniflow\uniflow-backend\target\classes started by bonface in C:\Users\bonface\Documents\uniflow\uniflow-backend)
+2026-04-07 13:10:44 [main] DEBUG com.uniflow.UniflowApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-07 13:10:44 [main] INFO  com.uniflow.UniflowApplication - The following 1 profile is active: "localhost"
+2026-04-07 13:10:46 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-07 13:10:46 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 182 ms. Found 9 JPA repository interfaces.
+2026-04-07 13:10:47 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-07 13:10:47 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-07 13:10:47 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-07 13:10:48 [main] INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-07 13:10:48 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-07 13:10:48 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3351 ms
+2026-04-07 13:10:48 [main] INFO  com.uniflow.config.DatabaseConfig - Initializing DataSource with URL: jdbc:postgresql://metro.proxy.rlwy.net:43329/railway
+2026-04-07 13:10:48 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-07 13:10:48 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-07 13:10:48 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-07 13:10:49 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-07 13:10:49 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Starting...
+2026-04-07 13:10:54 [main] INFO  com.zaxxer.hikari.pool.HikariPool - UniFlowHikariPool - Added connection org.postgresql.jdbc.PgConnection@6921cfa
+2026-04-07 13:10:54 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Start completed.
+2026-04-07 13:10:55 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-07 13:10:58 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-07 13:11:10 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 13:11:11 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-07 13:11:13 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: b533290b-a375-4e8f-9b7b-f55d3545d2e4
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-07 13:11:14 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5ca29f17, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@66f965a, org.springframework.security.web.context.SecurityContextHolderFilter@1b357db2, org.springframework.security.web.header.HeaderWriterFilter@49808d41, org.springframework.web.filter.CorsFilter@18ca65ea, org.springframework.security.web.authentication.logout.LogoutFilter@4b56971a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@12a065c5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6385af63, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@140a2add, org.springframework.security.web.session.SessionManagementFilter@4c3663fc, org.springframework.security.web.access.ExceptionTranslationFilter@39f1e9fc, org.springframework.security.web.access.intercept.AuthorizationFilter@11b975cc]
+2026-04-07 13:11:14 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+2026-04-07 13:11:14 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2026-04-07 13:11:14 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@60e72ced]]
+2026-04-07 13:11:14 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2026-04-07 13:11:14 [main] INFO  com.uniflow.UniflowApplication - Started UniflowApplication in 30.825 seconds (process running for 31.581)
+2026-04-07 13:11:15 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-04-07 13:11:15 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        venues v1_0
+2026-04-07 13:11:16 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        course_units cu1_0
+2026-04-07 13:11:16 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-04-07 13:11:17 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        venues v1_0
+2026-04-07 13:11:17 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        course_units cu1_0
+2026-04-07 13:11:18 [http-nio-0.0.0.0-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-07 13:11:18 [http-nio-0.0.0.0-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-07 13:11:18 [http-nio-0.0.0.0-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-04-07 13:12:14 [MessageBroker-4] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 3 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(3)-CONNECTED(3)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 16, active threads = 0, queued tasks = 0, completed tasks = 66], outboundChannel[pool size = 4, active threads = 0, queued tasks = 0, completed tasks = 4], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 3, completed tasks = 13]
+2026-04-07 13:12:30 [http-nio-0.0.0.0-8081-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-04-07 13:12:31 [http-nio-0.0.0.0-8081-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at,
+        n1_0.user_id,
+        n1_0.id,
+        n1_0.action_url,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.title,
+        n1_0.type 
+    from
+        users u1_0 
+    left join
+        notifications n1_0 
+            on u1_0.id=n1_0.user_id 
+    where
+        u1_0.id=?
+2026-04-07 13:12:32 [http-nio-0.0.0.0-8081-exec-5] DEBUG org.hibernate.SQL - 
+    update
+        users 
+    set
+        created_at=?,
+        department=?,
+        email=?,
+        is_active=?,
+        last_login=?,
+        name=?,
+        password=?,
+        phone_number=?,
+        role=?,
+        updated_at=? 
+    where
+        id=?
+2026-04-07 13:12:33 [http-nio-0.0.0.0-8081-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        te1_0.id,
+        te1_0.academic_year,
+        te1_0.cohort,
+        te1_0.color_code,
+        te1_0.course_unit_id,
+        te1_0.created_at,
+        te1_0.day_of_week,
+        te1_0.end_time,
+        te1_0.expected_students,
+        te1_0.is_makeup_class,
+        te1_0.lecturer_id,
+        te1_0.semester,
+        te1_0.start_time,
+        te1_0.status,
+        te1_0.updated_at,
+        te1_0.venue_id 
+    from
+        timetable_entries te1_0
+2026-04-07 13:12:38 [http-nio-0.0.0.0-8081-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        te1_0.id,
+        te1_0.academic_year,
+        te1_0.cohort,
+        te1_0.color_code,
+        te1_0.course_unit_id,
+        te1_0.created_at,
+        te1_0.day_of_week,
+        te1_0.end_time,
+        te1_0.expected_students,
+        te1_0.is_makeup_class,
+        te1_0.lecturer_id,
+        te1_0.semester,
+        te1_0.start_time,
+        te1_0.status,
+        te1_0.updated_at,
+        te1_0.venue_id 
+    from
+        timetable_entries te1_0
+2026-04-07 13:12:48 [http-nio-0.0.0.0-8081-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        te1_0.id,
+        te1_0.academic_year,
+        te1_0.cohort,
+        te1_0.color_code,
+        te1_0.course_unit_id,
+        te1_0.created_at,
+        te1_0.day_of_week,
+        te1_0.end_time,
+        te1_0.expected_students,
+        te1_0.is_makeup_class,
+        te1_0.lecturer_id,
+        te1_0.semester,
+        te1_0.start_time,
+        te1_0.status,
+        te1_0.updated_at,
+        te1_0.venue_id 
+    from
+        timetable_entries te1_0
+2026-04-07 13:14:19 [http-nio-0.0.0.0-8081-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-04-07 13:14:20 [http-nio-0.0.0.0-8081-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at,
+        n1_0.user_id,
+        n1_0.id,
+        n1_0.action_url,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.title,
+        n1_0.type 
+    from
+        users u1_0 
+    left join
+        notifications n1_0 
+            on u1_0.id=n1_0.user_id 
+    where
+        u1_0.id=?
+2026-04-07 13:14:21 [http-nio-0.0.0.0-8081-exec-5] DEBUG org.hibernate.SQL - 
+    update
+        users 
+    set
+        created_at=?,
+        department=?,
+        email=?,
+        is_active=?,
+        last_login=?,
+        name=?,
+        password=?,
+        phone_number=?,
+        role=?,
+        updated_at=? 
+    where
+        id=?
+2026-04-07 13:16:29 [http-nio-0.0.0.0-8081-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-04-07 13:16:30 [http-nio-0.0.0.0-8081-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at,
+        n1_0.user_id,
+        n1_0.id,
+        n1_0.action_url,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.title,
+        n1_0.type 
+    from
+        users u1_0 
+    left join
+        notifications n1_0 
+            on u1_0.id=n1_0.user_id 
+    where
+        u1_0.id=?
+2026-04-07 13:16:30 [http-nio-0.0.0.0-8081-exec-9] DEBUG org.hibernate.SQL - 
+    update
+        users 
+    set
+        created_at=?,
+        department=?,
+        email=?,
+        is_active=?,
+        last_login=?,
+        name=?,
+        password=?,
+        phone_number=?,
+        role=?,
+        updated_at=? 
+    where
+        id=?
+2026-04-07 13:16:42 [http-nio-0.0.0.0-8081-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        cur1_0.id,
+        cur1_0.comments,
+        cur1_0.course_unit_id,
+        cur1_0.expected_students,
+        cur1_0.is_auto_fallback,
+        cur1_0.providing_department,
+        cur1_0.rejection_reason,
+        cur1_0.requested_at,
+        cur1_0.requesting_department,
+        cur1_0.responded_at,
+        cur1_0.semester,
+        cur1_0.status 
+    from
+        course_unit_requests cur1_0
+2026-04-07 13:16:46 [http-nio-0.0.0.0-8081-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        v1_0.id,
+        v1_0.building,
+        v1_0.capacity,
+        v1_0.created_at,
+        v1_0.description,
+        v1_0.equipment_home,
+        v1_0.floor,
+        v1_0.hasac,
+        v1_0.has_projector,
+        v1_0.has_whiteboard,
+        v1_0.latitude,
+        v1_0.location,
+        v1_0.longitude,
+        v1_0.name,
+        v1_0.resource_home,
+        v1_0.status,
+        v1_0.updated_at 
+    from
+        venues v1_0
+2026-04-07 13:16:49 [http-nio-0.0.0.0-8081-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        te1_0.id,
+        te1_0.academic_year,
+        te1_0.cohort,
+        te1_0.color_code,
+        te1_0.course_unit_id,
+        te1_0.created_at,
+        te1_0.day_of_week,
+        te1_0.end_time,
+        te1_0.expected_students,
+        te1_0.is_makeup_class,
+        te1_0.lecturer_id,
+        te1_0.semester,
+        te1_0.start_time,
+        te1_0.status,
+        te1_0.updated_at,
+        te1_0.venue_id 
+    from
+        timetable_entries te1_0
+2026-04-07 13:16:52 [http-nio-0.0.0.0-8081-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        v1_0.id,
+        v1_0.building,
+        v1_0.capacity,
+        v1_0.created_at,
+        v1_0.description,
+        v1_0.equipment_home,
+        v1_0.floor,
+        v1_0.hasac,
+        v1_0.has_projector,
+        v1_0.has_whiteboard,
+        v1_0.latitude,
+        v1_0.location,
+        v1_0.longitude,
+        v1_0.name,
+        v1_0.resource_home,
+        v1_0.status,
+        v1_0.updated_at 
+    from
+        venues v1_0
+2026-04-07 13:16:57 [http-nio-0.0.0.0-8081-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        v1_0.id,
+        v1_0.building,
+        v1_0.capacity,
+        v1_0.created_at,
+        v1_0.description,
+        v1_0.equipment_home,
+        v1_0.floor,
+        v1_0.hasac,
+        v1_0.has_projector,
+        v1_0.has_whiteboard,
+        v1_0.latitude,
+        v1_0.location,
+        v1_0.longitude,
+        v1_0.name,
+        v1_0.resource_home,
+        v1_0.status,
+        v1_0.updated_at 
+    from
+        venues v1_0
+2026-04-07 13:24:04 [http-nio-0.0.0.0-8081-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+    fetch
+        first ? rows only
+2026-04-07 13:24:05 [http-nio-0.0.0.0-8081-exec-5] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        users
+        (created_at, department, email, is_active, last_login, name, password, phone_number, role, updated_at) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-04-07 13:24:06 [http-nio-0.0.0.0-8081-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        cur1_0.id,
+        cur1_0.comments,
+        cur1_0.course_unit_id,
+        cur1_0.expected_students,
+        cur1_0.is_auto_fallback,
+        cur1_0.providing_department,
+        cur1_0.rejection_reason,
+        cur1_0.requested_at,
+        cur1_0.requesting_department,
+        cur1_0.responded_at,
+        cur1_0.semester,
+        cur1_0.status 
+    from
+        course_unit_requests cur1_0
+2026-04-07 13:24:07 [http-nio-0.0.0.0-8081-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        at1_0.id,
+        at1_0.cohort,
+        at1_0.coordinator,
+        at1_0.created_at,
+        at1_0.department,
+        at1_0.description,
+        at1_0.destination,
+        at1_0.end_date,
+        at1_0.number_of_students,
+        at1_0.start_date,
+        at1_0.status,
+        at1_0.title,
+        at1_0.updated_at 
+    from
+        academic_trips at1_0
+2026-04-07 13:24:22 [http-nio-0.0.0.0-8081-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        v1_0.id,
+        v1_0.building,
+        v1_0.capacity,
+        v1_0.created_at,
+        v1_0.description,
+        v1_0.equipment_home,
+        v1_0.floor,
+        v1_0.hasac,
+        v1_0.has_projector,
+        v1_0.has_whiteboard,
+        v1_0.latitude,
+        v1_0.location,
+        v1_0.longitude,
+        v1_0.name,
+        v1_0.resource_home,
+        v1_0.status,
+        v1_0.updated_at 
+    from
+        venues v1_0
+2026-04-07 13:40:42 [http-nio-0.0.0.0-8081-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-04-07 13:40:43 [http-nio-0.0.0.0-8081-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at,
+        n1_0.user_id,
+        n1_0.id,
+        n1_0.action_url,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.title,
+        n1_0.type 
+    from
+        users u1_0 
+    left join
+        notifications n1_0 
+            on u1_0.id=n1_0.user_id 
+    where
+        u1_0.id=?
+2026-04-07 13:40:43 [http-nio-0.0.0.0-8081-exec-2] DEBUG org.hibernate.SQL - 
+    update
+        users 
+    set
+        created_at=?,
+        department=?,
+        email=?,
+        is_active=?,
+        last_login=?,
+        name=?,
+        password=?,
+        phone_number=?,
+        role=?,
+        updated_at=? 
+    where
+        id=?
+2026-04-07 13:40:44 [http-nio-0.0.0.0-8081-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        te1_0.id,
+        te1_0.academic_year,
+        te1_0.cohort,
+        te1_0.color_code,
+        te1_0.course_unit_id,
+        te1_0.created_at,
+        te1_0.day_of_week,
+        te1_0.end_time,
+        te1_0.expected_students,
+        te1_0.is_makeup_class,
+        te1_0.lecturer_id,
+        te1_0.semester,
+        te1_0.start_time,
+        te1_0.status,
+        te1_0.updated_at,
+        te1_0.venue_id 
+    from
+        timetable_entries te1_0
+2026-04-07 13:40:54 [http-nio-0.0.0.0-8081-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        v1_0.id,
+        v1_0.building,
+        v1_0.capacity,
+        v1_0.created_at,
+        v1_0.description,
+        v1_0.equipment_home,
+        v1_0.floor,
+        v1_0.hasac,
+        v1_0.has_projector,
+        v1_0.has_whiteboard,
+        v1_0.latitude,
+        v1_0.location,
+        v1_0.longitude,
+        v1_0.name,
+        v1_0.resource_home,
+        v1_0.status,
+        v1_0.updated_at 
+    from
+        venues v1_0
+2026-04-07 13:41:07 [http-nio-0.0.0.0-8081-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        v1_0.id,
+        v1_0.building,
+        v1_0.capacity,
+        v1_0.created_at,
+        v1_0.description,
+        v1_0.equipment_home,
+        v1_0.floor,
+        v1_0.hasac,
+        v1_0.has_projector,
+        v1_0.has_whiteboard,
+        v1_0.latitude,
+        v1_0.location,
+        v1_0.longitude,
+        v1_0.name,
+        v1_0.resource_home,
+        v1_0.status,
+        v1_0.updated_at 
+    from
+        venues v1_0
+2026-04-07 13:41:13 [http-nio-0.0.0.0-8081-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        v1_0.id,
+        v1_0.building,
+        v1_0.capacity,
+        v1_0.created_at,
+        v1_0.description,
+        v1_0.equipment_home,
+        v1_0.floor,
+        v1_0.hasac,
+        v1_0.has_projector,
+        v1_0.has_whiteboard,
+        v1_0.latitude,
+        v1_0.location,
+        v1_0.longitude,
+        v1_0.name,
+        v1_0.resource_home,
+        v1_0.status,
+        v1_0.updated_at 
+    from
+        venues v1_0
+2026-04-07 13:41:42 [http-nio-0.0.0.0-8081-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        v1_0.id,
+        v1_0.building,
+        v1_0.capacity,
+        v1_0.created_at,
+        v1_0.description,
+        v1_0.equipment_home,
+        v1_0.floor,
+        v1_0.hasac,
+        v1_0.has_projector,
+        v1_0.has_whiteboard,
+        v1_0.latitude,
+        v1_0.location,
+        v1_0.longitude,
+        v1_0.name,
+        v1_0.resource_home,
+        v1_0.status,
+        v1_0.updated_at 
+    from
+        venues v1_0
+2026-04-07 13:41:43 [http-nio-0.0.0.0-8081-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        te1_0.id,
+        te1_0.academic_year,
+        te1_0.cohort,
+        te1_0.color_code,
+        te1_0.course_unit_id,
+        te1_0.created_at,
+        te1_0.day_of_week,
+        te1_0.end_time,
+        te1_0.expected_students,
+        te1_0.is_makeup_class,
+        te1_0.lecturer_id,
+        te1_0.semester,
+        te1_0.start_time,
+        te1_0.status,
+        te1_0.updated_at,
+        te1_0.venue_id 
+    from
+        timetable_entries te1_0
+2026-04-07 13:41:43 [http-nio-0.0.0.0-8081-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        v1_0.id,
+        v1_0.building,
+        v1_0.capacity,
+        v1_0.created_at,
+        v1_0.description,
+        v1_0.equipment_home,
+        v1_0.floor,
+        v1_0.hasac,
+        v1_0.has_projector,
+        v1_0.has_whiteboard,
+        v1_0.latitude,
+        v1_0.location,
+        v1_0.longitude,
+        v1_0.name,
+        v1_0.resource_home,
+        v1_0.status,
+        v1_0.updated_at 
+    from
+        venues v1_0
+2026-04-07 13:41:48 [http-nio-0.0.0.0-8081-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        v1_0.id,
+        v1_0.building,
+        v1_0.capacity,
+        v1_0.created_at,
+        v1_0.description,
+        v1_0.equipment_home,
+        v1_0.floor,
+        v1_0.hasac,
+        v1_0.has_projector,
+        v1_0.has_whiteboard,
+        v1_0.latitude,
+        v1_0.location,
+        v1_0.longitude,
+        v1_0.name,
+        v1_0.resource_home,
+        v1_0.status,
+        v1_0.updated_at 
+    from
+        venues v1_0
+2026-04-07 13:41:48 [http-nio-0.0.0.0-8081-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        te1_0.id,
+        te1_0.academic_year,
+        te1_0.cohort,
+        te1_0.color_code,
+        te1_0.course_unit_id,
+        te1_0.created_at,
+        te1_0.day_of_week,
+        te1_0.end_time,
+        te1_0.expected_students,
+        te1_0.is_makeup_class,
+        te1_0.lecturer_id,
+        te1_0.semester,
+        te1_0.start_time,
+        te1_0.status,
+        te1_0.updated_at,
+        te1_0.venue_id 
+    from
+        timetable_entries te1_0
+2026-04-07 13:41:52 [http-nio-0.0.0.0-8081-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        te1_0.id,
+        te1_0.academic_year,
+        te1_0.cohort,
+        te1_0.color_code,
+        te1_0.course_unit_id,
+        te1_0.created_at,
+        te1_0.day_of_week,
+        te1_0.end_time,
+        te1_0.expected_students,
+        te1_0.is_makeup_class,
+        te1_0.lecturer_id,
+        te1_0.semester,
+        te1_0.start_time,
+        te1_0.status,
+        te1_0.updated_at,
+        te1_0.venue_id 
+    from
+        timetable_entries te1_0
+2026-04-07 13:42:14 [MessageBroker-3] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 4 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(4)-CONNECTED(4)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 93], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 7], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 2, completed tasks = 445]
+2026-04-07 13:42:44 [http-nio-0.0.0.0-8081-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-04-07 13:42:47 [http-nio-0.0.0.0-8081-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-04-07 13:42:49 [http-nio-0.0.0.0-8081-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-04-07 13:42:54 [http-nio-0.0.0.0-8081-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-04-07 13:42:55 [http-nio-0.0.0.0-8081-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at,
+        n1_0.user_id,
+        n1_0.id,
+        n1_0.action_url,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.title,
+        n1_0.type 
+    from
+        users u1_0 
+    left join
+        notifications n1_0 
+            on u1_0.id=n1_0.user_id 
+    where
+        u1_0.id=?
+2026-04-07 13:42:55 [http-nio-0.0.0.0-8081-exec-7] DEBUG org.hibernate.SQL - 
+    update
+        users 
+    set
+        created_at=?,
+        department=?,
+        email=?,
+        is_active=?,
+        last_login=?,
+        name=?,
+        password=?,
+        phone_number=?,
+        role=?,
+        updated_at=? 
+    where
+        id=?
+2026-04-07 13:42:56 [http-nio-0.0.0.0-8081-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        at1_0.id,
+        at1_0.cohort,
+        at1_0.coordinator,
+        at1_0.created_at,
+        at1_0.department,
+        at1_0.description,
+        at1_0.destination,
+        at1_0.end_date,
+        at1_0.number_of_students,
+        at1_0.start_date,
+        at1_0.status,
+        at1_0.title,
+        at1_0.updated_at 
+    from
+        academic_trips at1_0
+2026-04-07 13:42:56 [http-nio-0.0.0.0-8081-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        cur1_0.id,
+        cur1_0.comments,
+        cur1_0.course_unit_id,
+        cur1_0.expected_students,
+        cur1_0.is_auto_fallback,
+        cur1_0.providing_department,
+        cur1_0.rejection_reason,
+        cur1_0.requested_at,
+        cur1_0.requesting_department,
+        cur1_0.responded_at,
+        cur1_0.semester,
+        cur1_0.status 
+    from
+        course_unit_requests cur1_0
+2026-04-07 13:43:05 [http-nio-0.0.0.0-8081-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        cur1_0.id,
+        cur1_0.comments,
+        cur1_0.course_unit_id,
+        cur1_0.expected_students,
+        cur1_0.is_auto_fallback,
+        cur1_0.providing_department,
+        cur1_0.rejection_reason,
+        cur1_0.requested_at,
+        cur1_0.requesting_department,
+        cur1_0.responded_at,
+        cur1_0.semester,
+        cur1_0.status 
+    from
+        course_unit_requests cur1_0
+2026-04-07 13:43:08 [http-nio-0.0.0.0-8081-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        at1_0.id,
+        at1_0.cohort,
+        at1_0.coordinator,
+        at1_0.created_at,
+        at1_0.department,
+        at1_0.description,
+        at1_0.destination,
+        at1_0.end_date,
+        at1_0.number_of_students,
+        at1_0.start_date,
+        at1_0.status,
+        at1_0.title,
+        at1_0.updated_at 
+    from
+        academic_trips at1_0
+2026-04-07 13:43:12 [http-nio-0.0.0.0-8081-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        v1_0.id,
+        v1_0.building,
+        v1_0.capacity,
+        v1_0.created_at,
+        v1_0.description,
+        v1_0.equipment_home,
+        v1_0.floor,
+        v1_0.hasac,
+        v1_0.has_projector,
+        v1_0.has_whiteboard,
+        v1_0.latitude,
+        v1_0.location,
+        v1_0.longitude,
+        v1_0.name,
+        v1_0.resource_home,
+        v1_0.status,
+        v1_0.updated_at 
+    from
+        venues v1_0
+2026-04-07 13:43:15 [http-nio-0.0.0.0-8081-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        cur1_0.id,
+        cur1_0.comments,
+        cur1_0.course_unit_id,
+        cur1_0.expected_students,
+        cur1_0.is_auto_fallback,
+        cur1_0.providing_department,
+        cur1_0.rejection_reason,
+        cur1_0.requested_at,
+        cur1_0.requesting_department,
+        cur1_0.responded_at,
+        cur1_0.semester,
+        cur1_0.status 
+    from
+        course_unit_requests cur1_0
+2026-04-07 13:43:15 [http-nio-0.0.0.0-8081-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        at1_0.id,
+        at1_0.cohort,
+        at1_0.coordinator,
+        at1_0.created_at,
+        at1_0.department,
+        at1_0.description,
+        at1_0.destination,
+        at1_0.end_date,
+        at1_0.number_of_students,
+        at1_0.start_date,
+        at1_0.status,
+        at1_0.title,
+        at1_0.updated_at 
+    from
+        academic_trips at1_0
+2026-04-07 13:44:30 [http-nio-0.0.0.0-8081-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-04-07 13:44:31 [http-nio-0.0.0.0-8081-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at,
+        n1_0.user_id,
+        n1_0.id,
+        n1_0.action_url,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.title,
+        n1_0.type 
+    from
+        users u1_0 
+    left join
+        notifications n1_0 
+            on u1_0.id=n1_0.user_id 
+    where
+        u1_0.id=?
+2026-04-07 13:44:31 [http-nio-0.0.0.0-8081-exec-7] DEBUG org.hibernate.SQL - 
+    update
+        users 
+    set
+        created_at=?,
+        department=?,
+        email=?,
+        is_active=?,
+        last_login=?,
+        name=?,
+        password=?,
+        phone_number=?,
+        role=?,
+        updated_at=? 
+    where
+        id=?
+2026-04-07 13:44:32 [http-nio-0.0.0.0-8081-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        cur1_0.id,
+        cur1_0.comments,
+        cur1_0.course_unit_id,
+        cur1_0.expected_students,
+        cur1_0.is_auto_fallback,
+        cur1_0.providing_department,
+        cur1_0.rejection_reason,
+        cur1_0.requested_at,
+        cur1_0.requesting_department,
+        cur1_0.responded_at,
+        cur1_0.semester,
+        cur1_0.status 
+    from
+        course_unit_requests cur1_0
+2026-04-07 13:44:44 [http-nio-0.0.0.0-8081-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        cur1_0.id,
+        cur1_0.comments,
+        cur1_0.course_unit_id,
+        cur1_0.expected_students,
+        cur1_0.is_auto_fallback,
+        cur1_0.providing_department,
+        cur1_0.rejection_reason,
+        cur1_0.requested_at,
+        cur1_0.requesting_department,
+        cur1_0.responded_at,
+        cur1_0.semester,
+        cur1_0.status 
+    from
+        course_unit_requests cur1_0
+2026-04-07 13:44:47 [http-nio-0.0.0.0-8081-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        v1_0.id,
+        v1_0.building,
+        v1_0.capacity,
+        v1_0.created_at,
+        v1_0.description,
+        v1_0.equipment_home,
+        v1_0.floor,
+        v1_0.hasac,
+        v1_0.has_projector,
+        v1_0.has_whiteboard,
+        v1_0.latitude,
+        v1_0.location,
+        v1_0.longitude,
+        v1_0.name,
+        v1_0.resource_home,
+        v1_0.status,
+        v1_0.updated_at 
+    from
+        venues v1_0
+2026-04-07 13:44:51 [http-nio-0.0.0.0-8081-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        cur1_0.id,
+        cur1_0.comments,
+        cur1_0.course_unit_id,
+        cur1_0.expected_students,
+        cur1_0.is_auto_fallback,
+        cur1_0.providing_department,
+        cur1_0.rejection_reason,
+        cur1_0.requested_at,
+        cur1_0.requesting_department,
+        cur1_0.responded_at,
+        cur1_0.semester,
+        cur1_0.status 
+    from
+        course_unit_requests cur1_0
+2026-04-07 13:45:00 [http-nio-0.0.0.0-8081-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        te1_0.id,
+        te1_0.academic_year,
+        te1_0.cohort,
+        te1_0.color_code,
+        te1_0.course_unit_id,
+        te1_0.created_at,
+        te1_0.day_of_week,
+        te1_0.end_time,
+        te1_0.expected_students,
+        te1_0.is_makeup_class,
+        te1_0.lecturer_id,
+        te1_0.semester,
+        te1_0.start_time,
+        te1_0.status,
+        te1_0.updated_at,
+        te1_0.venue_id 
+    from
+        timetable_entries te1_0
+2026-04-07 13:45:02 [http-nio-0.0.0.0-8081-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        v1_0.id,
+        v1_0.building,
+        v1_0.capacity,
+        v1_0.created_at,
+        v1_0.description,
+        v1_0.equipment_home,
+        v1_0.floor,
+        v1_0.hasac,
+        v1_0.has_projector,
+        v1_0.has_whiteboard,
+        v1_0.latitude,
+        v1_0.location,
+        v1_0.longitude,
+        v1_0.name,
+        v1_0.resource_home,
+        v1_0.status,
+        v1_0.updated_at 
+    from
+        venues v1_0
+2026-04-07 13:45:08 [http-nio-0.0.0.0-8081-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        v1_0.id,
+        v1_0.building,
+        v1_0.capacity,
+        v1_0.created_at,
+        v1_0.description,
+        v1_0.equipment_home,
+        v1_0.floor,
+        v1_0.hasac,
+        v1_0.has_projector,
+        v1_0.has_whiteboard,
+        v1_0.latitude,
+        v1_0.location,
+        v1_0.longitude,
+        v1_0.name,
+        v1_0.resource_home,
+        v1_0.status,
+        v1_0.updated_at 
+    from
+        venues v1_0
+2026-04-07 13:45:50 [http-nio-0.0.0.0-8081-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-04-07 13:45:51 [http-nio-0.0.0.0-8081-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.department,
+        u1_0.email,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.name,
+        u1_0.password,
+        u1_0.phone_number,
+        u1_0.role,
+        u1_0.updated_at,
+        n1_0.user_id,
+        n1_0.id,
+        n1_0.action_url,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.title,
+        n1_0.type 
+    from
+        users u1_0 
+    left join
+        notifications n1_0 
+            on u1_0.id=n1_0.user_id 
+    where
+        u1_0.id=?
+2026-04-07 13:45:51 [http-nio-0.0.0.0-8081-exec-10] DEBUG org.hibernate.SQL - 
+    update
+        users 
+    set
+        created_at=?,
+        department=?,
+        email=?,
+        is_active=?,
+        last_login=?,
+        name=?,
+        password=?,
+        phone_number=?,
+        role=?,
+        updated_at=? 
+    where
+        id=?
+2026-04-07 13:46:06 [http-nio-0.0.0.0-8081-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        v1_0.id,
+        v1_0.building,
+        v1_0.capacity,
+        v1_0.created_at,
+        v1_0.description,
+        v1_0.equipment_home,
+        v1_0.floor,
+        v1_0.hasac,
+        v1_0.has_projector,
+        v1_0.has_whiteboard,
+        v1_0.latitude,
+        v1_0.location,
+        v1_0.longitude,
+        v1_0.name,
+        v1_0.resource_home,
+        v1_0.status,
+        v1_0.updated_at 
+    from
+        venues v1_0
+2026-04-07 13:47:10 [http-nio-0.0.0.0-8081-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        v1_0.id,
+        v1_0.building,
+        v1_0.capacity,
+        v1_0.created_at,
+        v1_0.description,
+        v1_0.equipment_home,
+        v1_0.floor,
+        v1_0.hasac,
+        v1_0.has_projector,
+        v1_0.has_whiteboard,
+        v1_0.latitude,
+        v1_0.location,
+        v1_0.longitude,
+        v1_0.name,
+        v1_0.resource_home,
+        v1_0.status,
+        v1_0.updated_at 
+    from
+        venues v1_0
+2026-04-07 14:12:14 [MessageBroker-6] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 4 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(4)-CONNECTED(4)-DISCONNECT(1)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 99], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 1, completed tasks = 849]
+2026-04-07 14:42:14 [MessageBroker-2] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 6 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(6)-CONNECTED(6)-DISCONNECT(1)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 144], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 12], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 2, completed tasks = 1259]
+2026-04-07 14:43:16 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2026-04-07 14:43:16 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@60e72ced]]
+2026-04-07 14:43:16 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2026-04-07 14:43:16 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 14:43:16 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Shutdown initiated...
+2026-04-07 14:43:18 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Shutdown completed.
+2026-04-07 14:43:57 [main] INFO  com.uniflow.UniflowApplication - Starting UniflowApplication using Java 21.0.10 with PID 3412 (C:\Users\bonface\Documents\uniflow\uniflow-backend\target\classes started by bonface in C:\Users\bonface\Documents\uniflow\uniflow-backend)
+2026-04-07 14:43:57 [main] DEBUG com.uniflow.UniflowApplication - Running with Spring Boot v3.2.4, Spring v6.1.5
+2026-04-07 14:43:57 [main] INFO  com.uniflow.UniflowApplication - The following 1 profile is active: "localhost"
+2026-04-07 14:43:59 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-07 14:43:59 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 185 ms. Found 10 JPA repository interfaces.
+2026-04-07 14:44:01 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-04-07 14:44:01 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-07 14:44:01 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-04-07 14:44:01 [main] INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-04-07 14:44:01 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-07 14:44:01 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4530 ms
+2026-04-07 14:44:01 [main] INFO  com.uniflow.config.DatabaseConfig - Initializing DataSource with URL: jdbc:postgresql://metro.proxy.rlwy.net:43329/railway
+2026-04-07 14:44:02 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-07 14:44:03 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-07 14:44:03 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-07 14:44:04 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-07 14:44:04 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Starting...
+2026-04-07 14:44:12 [main] INFO  com.zaxxer.hikari.pool.HikariPool - UniFlowHikariPool - Added connection org.postgresql.jdbc.PgConnection@579f3c8e
+2026-04-07 14:44:12 [main] INFO  com.zaxxer.hikari.HikariDataSource - UniFlowHikariPool - Start completed.
+2026-04-07 14:44:12 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-07 14:44:16 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-07 14:44:19 [main] DEBUG org.hibernate.SQL - 
+    create table class_rep_feedback (
+        id bigserial not null,
+        course_code varchar(255),
+        course_unit varchar(255),
+        description varchar(255),
+        issue varchar(255),
+        priority varchar(255),
+        reported_by varchar(255),
+        reported_date timestamp(6),
+        status varchar(255),
+        venue varchar(255),
+        primary key (id)
+    )
+2026-04-07 14:44:29 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07 14:44:30 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-07 14:44:32 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: e810b103-c769-4073-8e58-720b7a0ef83e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-07 14:44:33 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3d6f549c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@39090979, org.springframework.security.web.context.SecurityContextHolderFilter@35cf5d9, org.springframework.security.web.header.HeaderWriterFilter@bbe07e5, org.springframework.web.filter.CorsFilter@3638ae1c, org.springframework.security.web.authentication.logout.LogoutFilter@7b303608, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@c39ebcf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7ff167c4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@c2a7ded, org.springframework.security.web.session.SessionManagementFilter@43a304ee, org.springframework.security.web.access.ExceptionTranslationFilter@46b4819c, org.springframework.security.web.access.intercept.AuthorizationFilter@9a1b870]
+2026-04-07 14:44:33 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path ''
+2026-04-07 14:44:33 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2026-04-07 14:44:33 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@73b68d98]]
+2026-04-07 14:44:33 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2026-04-07 14:44:33 [main] INFO  com.uniflow.UniflowApplication - Started UniflowApplication in 38.314 seconds (process running for 39.363)
+2026-04-07 14:44:34 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-04-07 14:44:34 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        venues v1_0
+2026-04-07 14:44:35 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        course_units cu1_0
+2026-04-07 14:44:36 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-04-07 14:44:36 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        venues v1_0
+2026-04-07 14:44:36 [http-nio-0.0.0.0-8081-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-07 14:44:36 [http-nio-0.0.0.0-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-07 14:44:36 [http-nio-0.0.0.0-8081-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-04-07 14:44:37 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        course_units cu1_0
+2026-04-07 14:45:33 [MessageBroker-4] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 16, active threads = 0, queued tasks = 0, completed tasks = 21], outboundChannel[pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 8, active threads = 1, queued tasks = 2, completed tasks = 14]

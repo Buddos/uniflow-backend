@@ -36,7 +36,8 @@ public class NotificationController {
             n.put("message", notification.getMessage());
             n.put("type", notification.getType() != null ? notification.getType().toLowerCase() : "info");
             n.put("read", notification.getIsRead() != null ? notification.getIsRead() : false);
-            n.put("createdAt", notification.getCreatedAt() != null ? notification.getCreatedAt().toString() : "2026-03-31 09:00");
+            // Use 'timestamp' instead of 'createdAt' to match frontend expectations
+            n.put("timestamp", notification.getCreatedAt() != null ? notification.getCreatedAt().toString() : "2026-03-31T09:00:00");
             return n;
         }).collect(Collectors.toList());
         return ResponseEntity.ok(notifs);
