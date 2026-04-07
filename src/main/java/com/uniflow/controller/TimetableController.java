@@ -2,6 +2,8 @@ package com.uniflow.controller;
 
 import com.uniflow.model.TimetableEntry;
 import com.uniflow.service.TimetableService;
+import com.uniflow.service.RealtimeService;
+import com.uniflow.dto.RealtimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,9 @@ public class TimetableController {
     
     @Autowired
     private TimetableService timetableService;
+    
+    @Autowired
+    private RealtimeService realtimeService;
     
     @GetMapping
     public ResponseEntity<List<Map<String, Object>>> getAllTimetable() {
@@ -73,7 +78,9 @@ public class TimetableController {
     
     @PostMapping
     public ResponseEntity<TimetableEntry> createTimetableEntry(@RequestBody TimetableEntry entry) {
-        return ResponseEntity.ok(timetableService.createTimetableEntry(entry));
+        TimetableEntry savedEntry = timetableService.createTimetableEntry(entry);
+        realtimeService.broadcastTimetableChange(RealtimeMessage.OperationType.CREATE, savedEntry);
+        return ResponseEntity.ok(savedEntry);
     }
     
     @GetMapping("/conflicts")

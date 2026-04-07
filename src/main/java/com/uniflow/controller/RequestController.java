@@ -5,6 +5,8 @@ import com.uniflow.model.CourseUnit;
 import com.uniflow.model.CourseUnitRequest;
 import com.uniflow.repository.CourseUnitRepository;
 import com.uniflow.service.RequestService;
+import com.uniflow.service.RealtimeService;
+import com.uniflow.dto.RealtimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,9 @@ public class RequestController {
     
     @Autowired
     private CourseUnitRepository courseUnitRepository;
+    
+    @Autowired
+    private RealtimeService realtimeService;
     
     @GetMapping
     public ResponseEntity<List<Map<String, Object>>> getAllRequests() {
@@ -64,19 +69,25 @@ public class RequestController {
         request.setExpectedStudents(requestDTO.getExpectedStudents());
         request.setProvidingDepartment(courseUnit.getDepartment());
         
-        return ResponseEntity.ok(requestService.createRequest(request));
+        CourseUnitRequest savedRequest = requestService.createRequest(request);
+        realtimeService.broadcastRequestChange(RealtimeMessage.OperationType.CREATE, savedRequest);
+        return ResponseEntity.ok(savedRequest);
     }
     
     @PostMapping("/{requestId}/accept")
     public ResponseEntity<CourseUnitRequest> acceptRequest(@PathVariable Long requestId) {
-        return ResponseEntity.ok(requestService.acceptRequest(requestId));
+        CourseUnitRequest acceptedRequest = requestService.acceptRequest(requestId);
+        realtimeService.broadcastRequestChange(RealtimeMessage.OperationType.UPDATE, acceptedRequest);
+        return ResponseEntity.ok(acceptedRequest);
     }
     
     @PostMapping("/{requestId}/reject")
     public ResponseEntity<CourseUnitRequest> rejectRequest(
             @PathVariable Long requestId,
             @RequestParam String reason) {
-        return ResponseEntity.ok(requestService.rejectRequest(requestId, reason));
+        CourseUnitRequest rejectedRequest = requestService.rejectRequest(requestId, reason);
+        realtimeService.broadcastRequestChange(RealtimeMessage.OperationType.UPDATE, rejectedRequest);
+        return ResponseEntity.ok(rejectedRequest);
     }
     
     @GetMapping("/stats")
@@ -89,6 +100,8 @@ public class RequestController {
             @RequestParam String currentSemester,
             @RequestParam String previousSemester) {
         requestService.enforceDeadline(currentSemester, previousSemester);
+        // Broadcast a general update since this affects multiple requests
+        realtimeService.broadcastRequestChange(RealtimeMessage.OperationType.UPDATE, Map.of("action", "deadline_enforced"));
         Map<String, String> response = new HashMap<>();
         response.put("message", "Deadline enforced and fallback data applied successfully");
         return ResponseEntity.ok(response);

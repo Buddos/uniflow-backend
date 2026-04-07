@@ -3,6 +3,8 @@ package com.uniflow.controller;
 import com.uniflow.dto.TripRequestDTO;
 import com.uniflow.model.AcademicTrip;
 import com.uniflow.service.TripService;
+import com.uniflow.service.RealtimeService;
+import com.uniflow.dto.RealtimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,9 @@ public class TripController {
     
     @Autowired
     private TripService tripService;
+    
+    @Autowired
+    private RealtimeService realtimeService;
     
     @GetMapping
     public ResponseEntity<List<Map<String, Object>>> getAllTrips() {
@@ -68,19 +73,27 @@ public class TripController {
         trip.setDescription(tripDTO.getDescription());
         trip.setDepartment(tripDTO.getDepartment());
         
-        return ResponseEntity.ok(tripService.createTrip(trip));
+        AcademicTrip savedTrip = tripService.createTrip(trip);
+        realtimeService.broadcastTripChange(RealtimeMessage.OperationType.CREATE, savedTrip);
+        return ResponseEntity.ok(savedTrip);
     }
     
     @PutMapping("/{id}/status")
     public ResponseEntity<AcademicTrip> updateTripStatus(
             @PathVariable Long id,
             @RequestParam String status) {
-        return ResponseEntity.ok(tripService.updateTripStatus(id, status));
+        AcademicTrip updatedTrip = tripService.updateTripStatus(id, status);
+        realtimeService.broadcastTripChange(RealtimeMessage.OperationType.UPDATE, updatedTrip);
+        return ResponseEntity.ok(updatedTrip);
     }
     
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteTrip(@PathVariable Long id) {
-        tripService.deleteTrip(id);
+        AcademicTrip trip = tripService.getTripById(id);
+        if (trip != null) {
+            tripService.deleteTrip(id);
+            realtimeService.broadcastTripChange(RealtimeMessage.OperationType.DELETE, trip);
+        }
         return ResponseEntity.ok().build();
     }
     

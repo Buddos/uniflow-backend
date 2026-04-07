@@ -2,6 +2,8 @@ package com.uniflow.controller;
 
 import com.uniflow.model.Venue;
 import com.uniflow.service.VenueService;
+import com.uniflow.service.RealtimeService;
+import com.uniflow.dto.RealtimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,9 @@ public class VenueController {
     @Autowired
     private VenueService venueService;
     
+    @Autowired
+    private RealtimeService realtimeService;
+    
     @GetMapping
     public ResponseEntity<List<Venue>> getAllVenues() {
         return ResponseEntity.ok(venueService.getAllVenues());
@@ -32,17 +37,25 @@ public class VenueController {
     
     @PostMapping
     public ResponseEntity<Venue> createVenue(@RequestBody Venue venue) {
-        return ResponseEntity.ok(venueService.createVenue(venue));
+        Venue savedVenue = venueService.createVenue(venue);
+        realtimeService.broadcastVenueChange(RealtimeMessage.OperationType.CREATE, savedVenue);
+        return ResponseEntity.ok(savedVenue);
     }
     
     @PutMapping("/{id}")
     public ResponseEntity<Venue> updateVenue(@PathVariable Long id, @RequestBody Venue venue) {
-        return ResponseEntity.ok(venueService.updateVenue(id, venue));
+        Venue updatedVenue = venueService.updateVenue(id, venue);
+        realtimeService.broadcastVenueChange(RealtimeMessage.OperationType.UPDATE, updatedVenue);
+        return ResponseEntity.ok(updatedVenue);
     }
     
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteVenue(@PathVariable Long id) {
-        venueService.deleteVenue(id);
+        Venue venue = venueService.getVenueById(id).orElse(null);
+        if (venue != null) {
+            venueService.deleteVenue(id);
+            realtimeService.broadcastVenueChange(RealtimeMessage.OperationType.DELETE, venue);
+        }
         return ResponseEntity.ok().build();
     }
     
