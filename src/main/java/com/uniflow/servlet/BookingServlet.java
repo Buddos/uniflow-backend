@@ -69,7 +69,7 @@ public class BookingServlet extends HttpServlet {
             booking.setPurpose(root.path("purpose").asText());
             booking.setStatus("CONFIRMED");
             
-            Booking saved = bookingService.createBooking(booking);
+            Booking saved = bookingService.bookMakeupClass(booking);
             out.write(objectMapper.writeValueAsString(saved));
         } catch (Exception e) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

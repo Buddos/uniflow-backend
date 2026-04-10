@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -27,4 +28,6 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     
     @Query("SELECT COUNT(b) FROM Booking b WHERE b.startTime >= :startDate AND b.status = 'CONFIRMED'")
     long countBookingsAfterDate(@Param("startDate") LocalDateTime startDate);
+
+    boolean existsByVenueAndBookingDateAndStartTime(Venue venue, LocalDate bookingDate, LocalDateTime startTime);
 }

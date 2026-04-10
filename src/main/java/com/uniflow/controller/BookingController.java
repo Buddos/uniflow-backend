@@ -76,7 +76,7 @@ public class BookingController {
             .orElseThrow(() -> new RuntimeException("User not found"));
         booking.setBookedBy(user);
         
-        Booking savedBooking = bookingService.createBooking(booking);
+        Booking savedBooking = bookingService.bookMakeupClass(booking);
         realtimeService.broadcastBookingChange(RealtimeMessage.OperationType.CREATE, savedBooking);
         return ResponseEntity.ok(savedBooking);
     }

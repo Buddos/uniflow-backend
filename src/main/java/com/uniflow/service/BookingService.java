@@ -7,9 +7,12 @@ import com.uniflow.model.Venue;
 import com.uniflow.repository.BookingRepository;
 import com.uniflow.repository.UserRepository;
 import com.uniflow.repository.VenueRepository;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.annotation.Isolation;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -30,7 +33,22 @@ public class BookingService {
     
     @Transactional
     public Booking createBooking(Booking booking) {
+        return bookMakeupClass(booking);
+    }
+
+    @Transactional(isolation = Isolation.SERIALIZABLE)
+    public Booking bookMakeupClass(Booking booking) {
         assertWithinProximityLimit(booking.getVenue());
+
+        LocalDate bookingDate = booking.getBookingDate();
+        if (bookingDate == null && booking.getStartTime() != null) {
+            bookingDate = booking.getStartTime().toLocalDate();
+            booking.setBookingDate(bookingDate);
+        }
+
+        if (existsByVenueAndDateAndTime(booking.getVenue(), bookingDate, booking.getStartTime())) {
+            throw new DataIntegrityViolationException("This slot was just claimed by another user. Please refresh the Live Map.");
+        }
 
         // Check for conflicts
         List<Booking> conflicts = bookingRepository.findConflictingBookings(
@@ -121,6 +139,13 @@ public class BookingService {
     private boolean isWithinProximityLimit(Venue venue) {
         Integer distance = venue.getDistanceFromOfficeMeters();
         return distance != null && distance <= 300;
+    }
+
+    private boolean existsByVenueAndDateAndTime(Venue venue, LocalDate bookingDate, LocalDateTime startTime) {
+        return venue != null
+            && bookingDate != null
+            && startTime != null
+            && bookingRepository.existsByVenueAndBookingDateAndStartTime(venue, bookingDate, startTime);
     }
     
     public Map<String, Object> getBookingStatistics() {

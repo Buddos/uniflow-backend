@@ -87,6 +87,7 @@ CREATE TABLE bookings (
     venue_id BIGINT,
     timetable_entry_id BIGINT,
     booked_by_id BIGINT,
+    booking_date DATE NOT NULL,
     start_time TIMESTAMP,
     end_time TIMESTAMP,
     purpose VARCHAR(255),
@@ -97,7 +98,8 @@ CREATE TABLE bookings (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (venue_id) REFERENCES venues(id) ON DELETE CASCADE,
     FOREIGN KEY (timetable_entry_id) REFERENCES timetable_entries(id) ON DELETE SET NULL,
-    FOREIGN KEY (booked_by_id) REFERENCES users(id) ON DELETE SET NULL
+    FOREIGN KEY (booked_by_id) REFERENCES users(id) ON DELETE SET NULL,
+    UNIQUE (venue_id, booking_date, start_time)
 );
 
 CREATE TABLE course_unit_requests (

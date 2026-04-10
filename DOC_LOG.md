@@ -1,6 +1,14 @@
 # DOC Log
 
 ## 2026-04-11
+- Action: Prevented double-bookings with database-level uniqueness and serializable booking writes.
+- Status: Updated
+- Changes: Added `booking_date` to the bookings schema and enforced a unique constraint on `(venue_id, booking_date, start_time)` at both the SQL schema and JPA mapping levels. Introduced a serializable `bookMakeupClass(...)` booking path with a final `existsByVenueAndBookingDateAndStartTime(...)` check before save, routed booking callers through that path, and added a regression test for the duplicate-slot race condition. Added a `DataIntegrityViolationException` handler that returns HTTP 409 with a sanitized live-map refresh message.
+- Files: [uniflow-schema.sql](uniflow-schema.sql), [src/main/java/com/uniflow/model/Booking.java](src/main/java/com/uniflow/model/Booking.java), [src/main/java/com/uniflow/repository/BookingRepository.java](src/main/java/com/uniflow/repository/BookingRepository.java), [src/main/java/com/uniflow/service/BookingService.java](src/main/java/com/uniflow/service/BookingService.java), [src/main/java/com/uniflow/controller/BookingController.java](src/main/java/com/uniflow/controller/BookingController.java), [src/main/java/com/uniflow/servlet/BookingServlet.java](src/main/java/com/uniflow/servlet/BookingServlet.java), [src/main/java/com/uniflow/exception/GlobalExceptionHandler.java](src/main/java/com/uniflow/exception/GlobalExceptionHandler.java), [src/test/java/com/uniflow/service/BookingServiceTest.java](src/test/java/com/uniflow/service/BookingServiceTest.java)
+- Commit: Not created
+- Push: Not pushed
+
+## 2026-04-11
 - Action: Added read-only STUDENT RBAC constraints.
 - Status: Updated
 - Changes: Defined `STUDENT` as a valid role constant on the user model and restricted student access in the auth interceptor to GET-only requests for `/api/timetable`, `/api/venues`, `/api/venues/live-map`, and `/api/trips`. All student `POST`, `PUT`, `PATCH`, and `DELETE` requests are rejected across the application. Added an interceptor regression test to verify allowed reads and blocked writes.

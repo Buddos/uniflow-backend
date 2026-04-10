@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -52,6 +53,7 @@ class BookingServiceTest {
         booking.setVenue(venue);
         booking.setStartTime(LocalDateTime.now().plusHours(2));
         booking.setEndTime(LocalDateTime.now().plusHours(4));
+        booking.setBookingDate(LocalDate.now().plusDays(1));
         booking.setPurpose("Module IV practical");
     }
 
@@ -71,14 +73,29 @@ class BookingServiceTest {
         booking.getVenue().setDistanceFromOfficeMeters(220);
         when(bookingRepository.findConflictingBookings(any(Venue.class), any(LocalDateTime.class), any(LocalDateTime.class)))
             .thenReturn(List.of());
+        when(bookingRepository.existsByVenueAndBookingDateAndStartTime(any(Venue.class), any(LocalDate.class), any(LocalDateTime.class)))
+            .thenReturn(false);
         when(venueRepository.save(any(Venue.class))).thenAnswer(invocation -> invocation.getArgument(0));
         when(bookingRepository.save(any(Booking.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
-        Booking saved = bookingService.createBooking(booking);
+        Booking saved = bookingService.bookMakeupClass(booking);
 
         assertEquals("CONFIRMED", saved.getStatus());
         assertNotNull(saved.getCreatedAt());
         verify(venueRepository).save(any(Venue.class));
         verify(bookingRepository).save(any(Booking.class));
+    }
+
+    @Test
+    void bookMakeupClassShouldFailWhenDuplicateSlotWasJustClaimed() {
+        booking.getVenue().setDistanceFromOfficeMeters(220);
+        when(bookingRepository.findConflictingBookings(any(Venue.class), any(LocalDateTime.class), any(LocalDateTime.class)))
+            .thenReturn(List.of());
+        when(bookingRepository.existsByVenueAndBookingDateAndStartTime(any(Venue.class), any(LocalDate.class), any(LocalDateTime.class)))
+            .thenReturn(true);
+
+        assertThrows(org.springframework.dao.DataIntegrityViolationException.class, () -> bookingService.bookMakeupClass(booking));
+        verify(bookingRepository, never()).save(any(Booking.class));
+        verify(venueRepository, never()).save(any(Venue.class));
     }
 }

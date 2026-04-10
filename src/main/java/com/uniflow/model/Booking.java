@@ -2,9 +2,13 @@ package com.uniflow.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "bookings")
+@Table(
+    name = "bookings",
+    uniqueConstraints = @UniqueConstraint(columnNames = {"venue_id", "booking_date", "start_time"})
+)
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +27,9 @@ public class Booking {
     private User bookedBy;
     
     private LocalDateTime startTime;
+
+    @Column(name = "booking_date", nullable = false)
+    private LocalDate bookingDate;
     
     private LocalDateTime endTime;
     
@@ -64,6 +71,9 @@ public class Booking {
     
     public LocalDateTime getStartTime() { return startTime; }
     public void setStartTime(LocalDateTime startTime) { this.startTime = startTime; }
+
+    public LocalDate getBookingDate() { return bookingDate; }
+    public void setBookingDate(LocalDate bookingDate) { this.bookingDate = bookingDate; }
     
     public LocalDateTime getEndTime() { return endTime; }
     public void setEndTime(LocalDateTime endTime) { this.endTime = endTime; }
