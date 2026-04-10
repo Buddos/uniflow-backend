@@ -8,6 +8,7 @@ import com.uniflow.repository.VenueRepository;
 import com.uniflow.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.List;
@@ -71,6 +72,7 @@ public class TimetableService {
         return timetableRepository.findByDayOfWeekAndCohort(dayOfWeek, null);
     }
     
+    @Transactional
     public void autoReleaseVenuesForTrip(String cohort, String startDate, String endDate) {
         List<TimetableEntry> entries = timetableRepository.findByCohortAndAcademicYearAndSemester(cohort, "2024", "1");
         for (TimetableEntry entry : entries) {

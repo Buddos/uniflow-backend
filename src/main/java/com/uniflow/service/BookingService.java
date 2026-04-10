@@ -9,6 +9,7 @@ import com.uniflow.repository.UserRepository;
 import com.uniflow.repository.VenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -27,6 +28,7 @@ public class BookingService {
     @Autowired
     private VenueRepository venueRepository;
     
+    @Transactional
     public Booking createBooking(Booking booking) {
         assertWithinProximityLimit(booking.getVenue());
 
@@ -68,6 +70,7 @@ public class BookingService {
         return bookingRepository.findByVenue(venue);
     }
     
+    @Transactional
     public Booking cancelBooking(Long bookingId) {
         Booking booking = bookingRepository.findById(bookingId)
             .orElseThrow(() -> new RuntimeException("Booking not found"));

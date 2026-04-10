@@ -4,6 +4,7 @@ import com.uniflow.model.CourseUnitRequest;
 import com.uniflow.repository.RequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +17,7 @@ public class RequestService {
     @Autowired
     private RequestRepository requestRepository;
     
+    @Transactional
     public CourseUnitRequest createRequest(CourseUnitRequest request) {
         assertNoPendingIncomingRequests(request);
 
@@ -34,6 +36,7 @@ public class RequestService {
         }
     }
     
+    @Transactional
     public CourseUnitRequest acceptRequest(Long requestId) {
         CourseUnitRequest request = requestRepository.findById(requestId)
             .orElseThrow(() -> new RuntimeException("Request not found"));
@@ -43,6 +46,7 @@ public class RequestService {
         return requestRepository.save(request);
     }
     
+    @Transactional
     public CourseUnitRequest rejectRequest(Long requestId, String reason) {
         CourseUnitRequest request = requestRepository.findById(requestId)
             .orElseThrow(() -> new RuntimeException("Request not found"));
@@ -74,6 +78,7 @@ public class RequestService {
         return stats;
     }
     
+    @Transactional
     public void enforceDeadline(String currentSemester, String previousSemester) {
         List<CourseUnitRequest> prevRequests = requestRepository.findBySemester(previousSemester);
         Set<String> prevDepts = prevRequests.stream()

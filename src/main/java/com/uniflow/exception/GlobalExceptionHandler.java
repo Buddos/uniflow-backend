@@ -46,4 +46,13 @@ public class GlobalExceptionHandler {
         error.put("status", HttpStatus.BAD_REQUEST.value());
         return ResponseEntity.badRequest().body(error);
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Map<String, Object>> handleUnhandledException(Exception ex) {
+        Map<String, Object> error = new HashMap<>();
+        error.put("timestamp", LocalDateTime.now());
+        error.put("message", "An internal server error occurred");
+        error.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
+    }
 }

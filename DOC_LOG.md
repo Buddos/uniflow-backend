@@ -1,5 +1,13 @@
 # DOC Log
 
+## 2026-04-11
+- Action: Enforced transaction integrity and high-availability runtime tuning.
+- Status: Updated
+- Changes: Added `@Transactional` boundaries to core mutating service operations so multi-step writes roll back atomically on failure (`RequestService` request lifecycle/deadline fallback, `BookingService` create/cancel booking with venue status updates, and `TimetableService` trip-driven release flow). Tuned HikariCP for higher concurrency (`maximum-pool-size: 50`, `minimum-idle: 10`, `idle-timeout: 30000`, `max-lifetime: 1800000`) and tuned embedded Tomcat (`threads.max: 200`, `connection-timeout: 20000`). Added a global `Exception.class` handler that returns a sanitized 500 JSON payload without exposing internal exception details.
+- Files: [src/main/java/com/uniflow/service/RequestService.java](src/main/java/com/uniflow/service/RequestService.java), [src/main/java/com/uniflow/service/BookingService.java](src/main/java/com/uniflow/service/BookingService.java), [src/main/java/com/uniflow/service/TimetableService.java](src/main/java/com/uniflow/service/TimetableService.java), [src/main/resources/application.yaml](src/main/resources/application.yaml), [src/main/java/com/uniflow/exception/GlobalExceptionHandler.java](src/main/java/com/uniflow/exception/GlobalExceptionHandler.java)
+- Commit: Not created
+- Push: Not pushed
+
 ## 2026-04-10
 - Action: Hardened confidentiality and integrity controls for production security baseline.
 - Status: Updated
