@@ -21,8 +21,8 @@ spring:
   datasource:
     # Prepend jdbc explicitly for direct Spring Boot compatibility
     url: ${DATABASE_URL:jdbc:postgresql://metro.proxy.rlwy.net:43329/railway}
-    username: ${PGUSER:postgres}
-    password: ${PGPASSWORD:qRQmGXbLjWAfydROvUkfsTqZsjDgpcgI}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 10

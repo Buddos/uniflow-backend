@@ -17,9 +17,21 @@ public class RequestService {
     private RequestRepository requestRepository;
     
     public CourseUnitRequest createRequest(CourseUnitRequest request) {
+        assertNoPendingIncomingRequests(request);
+
         request.setStatus("PENDING");
         request.setRequestedAt(LocalDateTime.now());
         return requestRepository.save(request);
+    }
+
+    private void assertNoPendingIncomingRequests(CourseUnitRequest request) {
+        if (request == null || request.getRequestingDepartment() == null || request.getRequestingDepartment().isBlank()) {
+            throw new IllegalStateException("Submitting department is required");
+        }
+
+        if (!requestRepository.findPendingRequestsForDepartment(request.getRequestingDepartment()).isEmpty()) {
+            throw new IllegalStateException("Cannot submit to DET: You have unacknowledged Service Requests.");
+        }
     }
     
     public CourseUnitRequest acceptRequest(Long requestId) {

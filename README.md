@@ -73,6 +73,19 @@ spring:
     driver-class-name: org.h2.Driver
 ```
 
+### 4. Set Local Environment Variables
+
+Before running the Spring application locally, set the database credentials in your shell.
+
+PowerShell:
+
+```powershell
+$env:DB_USERNAME="postgres"
+$env:DB_PASSWORD="password"
+```
+
+If you want to override the database URL as well, set `DATABASE_URL` in the same session.
+
 ## Running the Application
 
 ### Development Mode
