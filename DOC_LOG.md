@@ -1,6 +1,14 @@
 # DOC Log
 
 ## 2026-04-11
+- Action: Optimized long-form session timeout and sliding expiration behavior.
+- Status: Updated
+- Changes: Increased servlet session timeout to 2 hours in runtime config and aligned cookie max-age/session metadata to the same window. Reworked session validity checks to derive from configured max inactive interval instead of hardcoded 30-minute thresholds, and introduced a post-success session touch so successful API responses extend COD session validity (sliding expiration).
+- Files: [src/main/resources/application.yaml](src/main/resources/application.yaml), [src/main/java/com/uniflow/util/SessionUtil.java](src/main/java/com/uniflow/util/SessionUtil.java), [src/main/java/com/uniflow/interceptor/AuthInterceptor.java](src/main/java/com/uniflow/interceptor/AuthInterceptor.java)
+- Commit: Not created
+- Push: Not pushed
+
+## 2026-04-11
 - Action: Implemented rejection reasons and resubmission flow for cross-faculty requests.
 - Status: Updated
 - Changes: Added request rejection notifications using the existing notifications table so the requesting COD receives a dashboard alert when a request is rejected. Exposed `rejectionReason` in the request dashboard payload, added a resubmission endpoint that moves a rejected request back to `PENDING` after cohort/requirements updates, and tightened service tests for rejection and resubmission transitions.

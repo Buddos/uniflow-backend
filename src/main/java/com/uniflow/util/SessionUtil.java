@@ -6,6 +6,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 public class SessionUtil {
+
+    public static final int SESSION_TIMEOUT_SECONDS = 2 * 60 * 60;
     
     public static final String USER_ATTR = "user";
     public static final String USER_ROLE_ATTR = "userRole";
@@ -20,7 +22,7 @@ public class SessionUtil {
         session.setAttribute(USER_ID_ATTR, user.getId());
         session.setAttribute(DEPARTMENT_ATTR, user.getDepartment());
         session.setAttribute(LAST_ACTIVITY_ATTR, System.currentTimeMillis());
-        session.setMaxInactiveInterval(30 * 60); // 30 minutes
+        session.setMaxInactiveInterval(SESSION_TIMEOUT_SECONDS);
         
         SessionTrackingListener.registerUserSession(session.getId(), user.getEmail());
     }
@@ -77,12 +79,21 @@ public class SessionUtil {
         }
         
         long inactivityTime = System.currentTimeMillis() - lastActivity;
-        if (inactivityTime > 30 * 60 * 1000) { // 30 minutes
+        int maxInactiveInterval = session.getMaxInactiveInterval() > 0
+            ? session.getMaxInactiveInterval()
+            : SESSION_TIMEOUT_SECONDS;
+
+        if (inactivityTime > maxInactiveInterval * 1000L) {
             invalidateSession(request);
             return false;
         }
-        
-        session.setAttribute(LAST_ACTIVITY_ATTR, System.currentTimeMillis());
         return true;
+    }
+
+    public static void touchSession(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.setAttribute(LAST_ACTIVITY_ATTR, System.currentTimeMillis());
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.uniflow.interceptor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.uniflow.model.User;
+import com.uniflow.util.SessionUtil;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import jakarta.servlet.http.HttpServletRequest;
@@ -61,7 +62,11 @@ public class AuthInterceptor implements HandlerInterceptor {
         Long lastActivity = (Long) session.getAttribute("lastActivity");
         if (lastActivity != null) {
             long inactivityTime = System.currentTimeMillis() - lastActivity;
-            if (inactivityTime > 30 * 60 * 1000) { // 30 minutes
+            int maxInactiveInterval = session.getMaxInactiveInterval() > 0
+                ? session.getMaxInactiveInterval()
+                : SessionUtil.SESSION_TIMEOUT_SECONDS;
+
+            if (inactivityTime > maxInactiveInterval * 1000L) {
                 session.invalidate();
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 response.setContentType("application/json");
@@ -71,10 +76,15 @@ public class AuthInterceptor implements HandlerInterceptor {
                 return false;
             }
         }
-        
-        // Update last activity
-        session.setAttribute("lastActivity", System.currentTimeMillis());
+
         return true;
+    }
+
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
+        if (ex == null && response.getStatus() < HttpServletResponse.SC_BAD_REQUEST) {
+            SessionUtil.touchSession(request);
+        }
     }
 
     private boolean isRoleAllowed(String path, String method, String role) {
