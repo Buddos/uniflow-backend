@@ -1,7 +1,9 @@
 package com.uniflow.service;
 
 import com.uniflow.model.CourseUnitRequest;
+import com.uniflow.model.User;
 import com.uniflow.repository.RequestRepository;
+import com.uniflow.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +18,12 @@ public class RequestService {
     
     @Autowired
     private RequestRepository requestRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private NotificationService notificationService;
     
     @Transactional
     public CourseUnitRequest createRequest(CourseUnitRequest request) {
@@ -50,10 +58,35 @@ public class RequestService {
     public CourseUnitRequest rejectRequest(Long requestId, String reason) {
         CourseUnitRequest request = requestRepository.findById(requestId)
             .orElseThrow(() -> new RuntimeException("Request not found"));
+
+        if (reason == null || reason.isBlank()) {
+            throw new IllegalStateException("Rejection reason is required");
+        }
         
         request.setStatus("REJECTED");
         request.setRejectionReason(reason);
         request.setRespondedAt(LocalDateTime.now());
+
+        CourseUnitRequest savedRequest = requestRepository.save(request);
+        notifyRequestingCodOfRejection(savedRequest, reason);
+        return savedRequest;
+    }
+
+    @Transactional
+    public CourseUnitRequest resubmitRequest(Long requestId, Integer expectedStudents, String comments) {
+        CourseUnitRequest request = requestRepository.findById(requestId)
+            .orElseThrow(() -> new RuntimeException("Request not found"));
+
+        if (!"REJECTED".equals(request.getStatus())) {
+            throw new IllegalStateException("Only rejected requests can be resubmitted");
+        }
+
+        request.setExpectedStudents(expectedStudents);
+        request.setComments(comments);
+        request.setStatus("PENDING");
+        request.setRejectionReason(null);
+        request.setRespondedAt(null);
+        request.setRequestedAt(LocalDateTime.now());
         return requestRepository.save(request);
     }
     
@@ -111,5 +144,25 @@ public class RequestService {
                 }
             }
         }
+    }
+
+    private void notifyRequestingCodOfRejection(CourseUnitRequest request, String reason) {
+        if (request.getRequestingDepartment() == null || request.getRequestingDepartment().isBlank()) {
+            return;
+        }
+
+        List<User> requesters = userRepository.findByDepartmentAndRoleAndIsActiveTrue(request.getRequestingDepartment(), "COD");
+        if (requesters.isEmpty()) {
+            return;
+        }
+
+        User requestingCod = requesters.get(0);
+        String courseName = request.getCourseUnit() != null ? request.getCourseUnit().getName() : "the request";
+        notificationService.createNotification(
+            requestingCod.getId(),
+            "Request Rejected",
+            "Your course request for " + courseName + " was rejected: " + reason,
+            "ALERT"
+        );
     }
 }

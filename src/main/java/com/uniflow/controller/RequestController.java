@@ -1,6 +1,7 @@
 package com.uniflow.controller;
 
 import com.uniflow.dto.CourseRequestDTO;
+import com.uniflow.dto.RequestResubmissionDTO;
 import com.uniflow.model.CourseUnit;
 import com.uniflow.model.CourseUnitRequest;
 import com.uniflow.repository.CourseUnitRepository;
@@ -46,6 +47,7 @@ public class RequestController {
             cr.put("providingDepartment", request.getProvidingDepartment());
             cr.put("cohortSize", request.getExpectedStudents());
             cr.put("status", request.getStatus() != null ? request.getStatus().toLowerCase() : "pending");
+            cr.put("rejectionReason", request.getRejectionReason());
             cr.put("createdAt", request.getRequestedAt() != null ? request.getRequestedAt().toString() : "2026-03-20");
             return cr;
         }).collect(Collectors.toList());
@@ -88,6 +90,19 @@ public class RequestController {
         CourseUnitRequest rejectedRequest = requestService.rejectRequest(requestId, reason);
         realtimeService.broadcastRequestChange(RealtimeMessage.OperationType.UPDATE, rejectedRequest);
         return ResponseEntity.ok(rejectedRequest);
+    }
+
+    @PostMapping("/{requestId}/resubmit")
+    public ResponseEntity<CourseUnitRequest> resubmitRequest(
+            @PathVariable Long requestId,
+            @Valid @RequestBody RequestResubmissionDTO resubmissionDTO) {
+        CourseUnitRequest resubmittedRequest = requestService.resubmitRequest(
+            requestId,
+            resubmissionDTO.getExpectedStudents(),
+            resubmissionDTO.getComments()
+        );
+        realtimeService.broadcastRequestChange(RealtimeMessage.OperationType.UPDATE, resubmittedRequest);
+        return ResponseEntity.ok(resubmittedRequest);
     }
     
     @GetMapping("/stats")
