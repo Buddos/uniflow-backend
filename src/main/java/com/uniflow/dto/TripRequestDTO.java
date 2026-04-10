@@ -1,15 +1,17 @@
 package com.uniflow.dto;
 
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Min;
 import java.time.LocalDate;
 
 public class TripRequestDTO {
-    @NotNull(message = "Title is required")
+    @NotBlank(message = "Title is required")
     private String title;
     
     private String destination;
     
-    @NotNull(message = "Cohort is required")
+    @NotBlank(message = "Cohort is required")
     private String cohort;
     
     @NotNull(message = "Start date is required")
@@ -20,8 +22,10 @@ public class TripRequestDTO {
     
     private String description;
     
+    @NotBlank(message = "Department is required")
     private String department;
     
+    @Min(value = 1, message = "Number of students must be at least 1")
     private Integer numberOfStudents;
     
     // Getters and Setters

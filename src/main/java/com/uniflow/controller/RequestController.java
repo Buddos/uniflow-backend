@@ -7,6 +7,7 @@ import com.uniflow.repository.CourseUnitRepository;
 import com.uniflow.service.RequestService;
 import com.uniflow.service.RealtimeService;
 import com.uniflow.dto.RealtimeMessage;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,6 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/requests")
-@CrossOrigin(origins = "*")
 public class RequestController {
     
     @Autowired
@@ -58,7 +58,7 @@ public class RequestController {
     }
     
     @PostMapping
-    public ResponseEntity<CourseUnitRequest> createRequest(@RequestBody CourseRequestDTO requestDTO) {
+    public ResponseEntity<CourseUnitRequest> createRequest(@Valid @RequestBody CourseRequestDTO requestDTO) {
         CourseUnitRequest request = new CourseUnitRequest();
         
         CourseUnit courseUnit = courseUnitRepository.findById(requestDTO.getCourseUnitId())

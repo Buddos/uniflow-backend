@@ -1,6 +1,8 @@
 package com.uniflow.dto;
 
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 
 public class BookingRequest {
@@ -13,8 +15,11 @@ public class BookingRequest {
     @NotNull(message = "End time is required")
     private LocalDateTime endTime;
     
+    @NotBlank(message = "Purpose is required")
     private String purpose;
     
+    @NotBlank(message = "Booking type is required")
+    @Pattern(regexp = "REGULAR|MAKEUP|EVENT", message = "Booking type must be REGULAR, MAKEUP, or EVENT")
     private String bookingType = "REGULAR";
     
     // Getters and Setters

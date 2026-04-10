@@ -4,6 +4,7 @@ import com.uniflow.model.TimetableEntry;
 import com.uniflow.service.TimetableService;
 import com.uniflow.service.RealtimeService;
 import com.uniflow.dto.RealtimeMessage;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,6 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/timetable")
-@CrossOrigin(origins = "*")
 public class TimetableController {
     
     @Autowired
@@ -76,7 +76,7 @@ public class TimetableController {
     }
     
     @PostMapping
-    public ResponseEntity<TimetableEntry> createTimetableEntry(@RequestBody TimetableEntry entry) {
+    public ResponseEntity<TimetableEntry> createTimetableEntry(@Valid @RequestBody TimetableEntry entry) {
         TimetableEntry savedEntry = timetableService.createTimetableEntry(entry);
         realtimeService.broadcastTimetableChange(RealtimeMessage.OperationType.CREATE, savedEntry);
         return ResponseEntity.ok(savedEntry);

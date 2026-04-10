@@ -2,6 +2,7 @@ package com.uniflow.controller;
 
 import com.uniflow.dto.BookingRequest;
 import com.uniflow.dto.RealtimeMessage;
+import com.uniflow.exception.UnauthorizedException;
 import com.uniflow.model.Booking;
 import com.uniflow.model.User;
 import com.uniflow.model.Venue;
@@ -11,6 +12,7 @@ import com.uniflow.service.BookingService;
 import com.uniflow.service.QRCodeGeneratorService;
 import com.uniflow.service.RealtimeService;
 import com.uniflow.util.SessionUtil;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +24,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/bookings")
-@CrossOrigin(origins = "*")
 public class BookingController {
     
     @Autowired
@@ -52,7 +53,13 @@ public class BookingController {
     }
     
     @PostMapping
-    public ResponseEntity<Booking> createBooking(@RequestBody BookingRequest bookingRequest, HttpServletRequest request) {
+    public ResponseEntity<Booking> createBooking(@Valid @RequestBody BookingRequest bookingRequest, HttpServletRequest request) {
+        String role = SessionUtil.getUserRole(request);
+        if ("LECTURER".equalsIgnoreCase(role)
+                && !"MAKEUP".equalsIgnoreCase(bookingRequest.getBookingType())) {
+            throw new UnauthorizedException("Lecturers may only create makeup bookings.");
+        }
+
         Booking booking = new Booking();
         
         Venue venue = venueRepository.findById(bookingRequest.getVenueId())
@@ -96,7 +103,12 @@ public class BookingController {
     }
 
     @GetMapping("/{bookingId}/voucher")
-    public ResponseEntity<Map<String, Object>> getVoucher(@PathVariable Long bookingId) {
+    public ResponseEntity<Map<String, Object>> getVoucher(@PathVariable Long bookingId, HttpServletRequest request) {
+        String role = SessionUtil.getUserRole(request);
+        if (!"CLASS_REP".equalsIgnoreCase(role)) {
+            throw new UnauthorizedException("Only Class Reps can access booking vouchers.");
+        }
+
         Booking booking = bookingService.getBookingById(bookingId);
 
         String payload = "bookingId=" + booking.getId()

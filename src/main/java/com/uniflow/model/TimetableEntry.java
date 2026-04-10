@@ -1,6 +1,8 @@
 package com.uniflow.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -13,6 +15,7 @@ public class TimetableEntry {
     
     @ManyToOne
     @JoinColumn(name = "venue_id")
+    @NotNull(message = "Venue is required")
     private Venue venue;
     
     @ManyToOne
@@ -25,8 +28,10 @@ public class TimetableEntry {
     
     private String dayOfWeek; // MONDAY, TUESDAY, etc.
     
+    @NotNull(message = "Start time is required")
     private LocalTime startTime;
     
+    @NotNull(message = "End time is required")
     private LocalTime endTime;
     
     private String academicYear;
@@ -35,6 +40,8 @@ public class TimetableEntry {
     
     private String cohort;
     
+    @NotNull(message = "Total admitted students is required")
+    @Min(value = 1, message = "Total admitted students must be at least 1")
     private Integer totalAdmittedStudents;
 
     private Integer registeredStudents;

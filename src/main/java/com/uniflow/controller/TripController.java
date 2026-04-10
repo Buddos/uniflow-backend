@@ -5,6 +5,7 @@ import com.uniflow.model.AcademicTrip;
 import com.uniflow.service.TripService;
 import com.uniflow.service.RealtimeService;
 import com.uniflow.dto.RealtimeMessage;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,6 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/trips")
-@CrossOrigin(origins = "*")
 public class TripController {
     
     @Autowired
@@ -63,7 +63,7 @@ public class TripController {
     }
     
     @PostMapping
-    public ResponseEntity<AcademicTrip> createTrip(@RequestBody TripRequestDTO tripDTO) {
+    public ResponseEntity<AcademicTrip> createTrip(@Valid @RequestBody TripRequestDTO tripDTO) {
         AcademicTrip trip = new AcademicTrip();
         trip.setTitle(tripDTO.getTitle());
         trip.setDestination(tripDTO.getDestination());

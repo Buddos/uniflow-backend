@@ -1,6 +1,13 @@
 # DOC Log
 
 ## 2026-04-10
+- Action: Hardened confidentiality and integrity controls for production security baseline.
+- Status: Updated
+- Changes: Removed wildcard CORS and restricted allowed origins to trusted frontend hosts with credentials support; aligned session policy to cookie-backed auth; added RBAC restrictions in the auth interceptor for Class Rep voucher access, lecturer trip/makeup scope, and COD/DET timetable consolidation routes; added controller-level role guards for lecturer booking type and voucher access; enforced `@Valid` and field constraints for booking, trip, request, and timetable payloads.
+- Files: [src/main/java/com/uniflow/config/SecurityConfig.java](src/main/java/com/uniflow/config/SecurityConfig.java), [src/main/java/com/uniflow/config/WebConfig.java](src/main/java/com/uniflow/config/WebConfig.java), [src/main/java/com/uniflow/filter/CORSFilter.java](src/main/java/com/uniflow/filter/CORSFilter.java), [src/main/java/com/uniflow/interceptor/AuthInterceptor.java](src/main/java/com/uniflow/interceptor/AuthInterceptor.java), [src/main/java/com/uniflow/controller/BookingController.java](src/main/java/com/uniflow/controller/BookingController.java), [src/main/java/com/uniflow/controller/TimetableController.java](src/main/java/com/uniflow/controller/TimetableController.java), [src/main/java/com/uniflow/controller/RequestController.java](src/main/java/com/uniflow/controller/RequestController.java), [src/main/java/com/uniflow/controller/TripController.java](src/main/java/com/uniflow/controller/TripController.java), [src/main/java/com/uniflow/dto/BookingRequest.java](src/main/java/com/uniflow/dto/BookingRequest.java), [src/main/java/com/uniflow/dto/CourseRequestDTO.java](src/main/java/com/uniflow/dto/CourseRequestDTO.java), [src/main/java/com/uniflow/dto/TripRequestDTO.java](src/main/java/com/uniflow/dto/TripRequestDTO.java), [src/main/java/com/uniflow/model/TimetableEntry.java](src/main/java/com/uniflow/model/TimetableEntry.java)
+- Commit: Not created
+- Push: Not pushed
+
 - Action: Implemented Module III released-slot visualization and one-click booking in live timetable map.
 - Status: Updated
 - Changes: Updated the timetable view to detect released slots from timetable status (`CANCELLED`/`RELEASED`), render them with a high-visibility green style, and show a lecturer-only `Book Makeup` action that posts directly to the booking API with pre-filled slot details.

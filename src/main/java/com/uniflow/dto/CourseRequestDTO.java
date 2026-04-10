@@ -1,14 +1,18 @@
 package com.uniflow.dto;
 
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Min;
 
 public class CourseRequestDTO {
     @NotNull(message = "Course unit ID is required")
     private Long courseUnitId;
     
     @NotNull(message = "Expected students count is required")
+    @Min(value = 1, message = "Expected students must be at least 1")
     private Integer expectedStudents;
     
+    @NotBlank(message = "Requesting department code is required")
     private String requestingDepartmentCode;
     
     private String comments;

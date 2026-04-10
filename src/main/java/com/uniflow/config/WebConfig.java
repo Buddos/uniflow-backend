@@ -15,9 +15,10 @@ public class WebConfig implements WebMvcConfigurer {
     
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        // Allow all localhost ports and the Vercel production domain for API endpoints
         registry.addMapping("/api/**")
                 .allowedOrigins(
+                    "https://uniflow-app-livid.vercel.app",
+                    "https://uniflow-frontend.railway.app",
                     "http://localhost:3000",
                     "http://localhost:3001",
                     "http://localhost:5173",
@@ -35,6 +36,8 @@ public class WebConfig implements WebMvcConfigurer {
         // Allow WebSocket connections
         registry.addMapping("/ws/**")
                 .allowedOrigins(
+                    "https://uniflow-app-livid.vercel.app",
+                    "https://uniflow-frontend.railway.app",
                     "http://localhost:3000",
                     "http://localhost:3001",
                     "http://localhost:5173",
