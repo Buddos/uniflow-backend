@@ -1,6 +1,13 @@
 # DOC Log
 
 ## 2026-04-10
+- Action: Implemented Module III released-slot visualization and one-click booking in live timetable map.
+- Status: Updated
+- Changes: Updated the timetable view to detect released slots from timetable status (`CANCELLED`/`RELEASED`), render them with a high-visibility green style, and show a lecturer-only `Book Makeup` action that posts directly to the booking API with pre-filled slot details.
+- Files: [src/main/webapp/WEB-INF/jsp/timetable.jsp](src/main/webapp/WEB-INF/jsp/timetable.jsp)
+- Commit: Not created
+- Push: Not pushed
+
 - Action: Implemented Module I cohort-based projection rule for timetable capacity.
 - Status: Updated
 - Changes: Added `totalAdmittedStudents` and `registeredStudents` to timetable entries and schema, refactored timetable 110% capacity validation to use admitted cohort counts only, and updated timetable output mapping to report admitted cohort size. Added unit tests proving acceptance at >=110% admitted and rejection below 110% even when registered count is zero.

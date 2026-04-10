@@ -21,6 +21,11 @@
         /* ── Slot button ── */
         .slot-btn { width: 100%; text-align: left; padding: 0.5rem 0.625rem; border-radius: 0.375rem; border: 1px solid transparent; font-size: 0.72rem; transition: box-shadow 0.15s, transform 0.15s; cursor: pointer; background: none; }
         .slot-btn:hover { box-shadow: 0 4px 12px -2px rgba(0,0,0,0.12); transform: translateY(-1px); }
+        .slot-released { background:#22c55e !important; color:#052e16 !important; border-color:#16a34a !important; }
+        .slot-released:hover { box-shadow: 0 6px 14px -2px rgba(34,197,94,0.4); }
+        .slot-status { margin:0.15rem 0 0; font-size:0.63rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; }
+        .slot-action-btn { margin-top:0.35rem; width:100%; border:none; border-radius:0.35rem; padding:0.35rem 0.45rem; font-size:0.68rem; font-weight:700; cursor:pointer; background:#065f46; color:#ecfdf5; }
+        .slot-action-btn:hover { background:#064e3b; }
         .empty-slot { height: 4rem; border-radius: 0.375rem; background: #f1f5f9; }
         /* ── Dept color presets ── */
         .dept-cs   { background:#dbeafe; color:#1e40af; border-color:#bfdbfe; }
@@ -112,6 +117,7 @@
             <span class="badge dept-phy">Physics</span>
             <span class="badge dept-eng">Engineering</span>
             <span class="badge dept-bus">Business</span>
+            <span class="badge" style="background:#dcfce7;color:#166534;border-color:#86efac;">Released Slot</span>
             <span class="badge dept-def">Other</span>
         </div>
 
@@ -138,9 +144,11 @@
         "day":       "${e.dayOfWeek}",
         "startTime": "${e.startTime}",
         "endTime":   "${e.endTime}",
+        "status":    "${e.status != null ? e.status : 'SCHEDULED'}",
         "code":      "${e.courseUnit != null ? e.courseUnit.code : ''}",
         "name":      "${e.courseUnit != null ? e.courseUnit.name : 'Session'}",
         "dept":      "${e.courseUnit != null ? e.courseUnit.department : ''}",
+        "venueId":   ${e.venue != null ? e.venue.id : 0},
         "venue":     "${e.venue != null ? e.venue.name : ''}",
         "lecturer":  "${e.lecturer != null ? e.lecturer.name : ''}",
         "cohort":    "${e.cohort != null ? e.cohort : ''}",
@@ -149,6 +157,10 @@
     }${!loop.last ? ',' : ''}
 </c:forEach>
 ]
+</script>
+
+<script>
+window.__USER_ROLE = "${sessionScope.userRole != null ? sessionScope.userRole : ''}";
 </script>
 
 <script>
@@ -170,6 +182,73 @@
 
     var entries = [];
     try { entries = JSON.parse(document.getElementById('ttData').textContent); } catch(e) {}
+
+    var currentUserRole = (window.__USER_ROLE || '').toUpperCase();
+
+    function isReleasedSlot(slot) {
+        var status = (slot.status || '').toUpperCase();
+        return status === 'CANCELLED' || status === 'RELEASED';
+    }
+
+    function dayToIndex(day) {
+        var map = {SUNDAY:0, MONDAY:1, TUESDAY:2, WEDNESDAY:3, THURSDAY:4, FRIDAY:5, SATURDAY:6};
+        return map[day] !== undefined ? map[day] : -1;
+    }
+
+    function getNextDateForDay(day) {
+        var today = new Date();
+        var target = dayToIndex(day);
+        if (target < 0) return today;
+        var diff = (target - today.getDay() + 7) % 7;
+        var result = new Date(today);
+        result.setDate(today.getDate() + diff);
+        return result;
+    }
+
+    function toLocalDateTimeString(dateObj, timeValue) {
+        var raw = (timeValue || '00:00:00').split(':');
+        var hh = (raw[0] || '00').padStart(2, '0');
+        var mm = (raw[1] || '00').padStart(2, '0');
+        var ss = (raw[2] || '00').padStart(2, '0');
+        var yyyy = dateObj.getFullYear();
+        var month = String(dateObj.getMonth() + 1).padStart(2, '0');
+        var dd = String(dateObj.getDate()).padStart(2, '0');
+        return yyyy + '-' + month + '-' + dd + 'T' + hh + ':' + mm + ':' + ss;
+    }
+
+    async function bookMakeup(slot) {
+        if (!slot || !slot.venueId) {
+            alert('Cannot create booking: missing venue information for this released slot.');
+            return;
+        }
+
+        var bookingDate = getNextDateForDay(slot.day);
+        var payload = {
+            venueId: slot.venueId,
+            startTime: toLocalDateTimeString(bookingDate, slot.startTime),
+            endTime: toLocalDateTimeString(bookingDate, slot.endTime),
+            purpose: 'Makeup class request from released trip slot (' + (slot.code || 'N/A') + ')',
+            bookingType: 'MAKEUP'
+        };
+
+        try {
+            var response = await fetch('/api/bookings', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                credentials: 'include',
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                var errorBody = await response.text();
+                throw new Error(errorBody || 'Booking request failed.');
+            }
+
+            alert('Makeup booking created successfully for ' + (DAY_LABELS[slot.day] || slot.day) + '.');
+        } catch (err) {
+            alert('Failed to create makeup booking: ' + err.message);
+        }
+    }
 
     function getSlot(day, time) {
         var startHour = parseInt(time.split(':')[0]);
@@ -194,14 +273,24 @@
             td.style.cssText = 'padding:0.375rem;';
             var slot = getSlot(day, time);
             if (slot) {
+                var released = isReleasedSlot(slot);
                 var btn = document.createElement('button');
-                btn.className = 'slot-btn ' + deptClass(slot.dept);
+                btn.className = 'slot-btn ' + (released ? 'slot-released' : deptClass(slot.dept));
                 btn.innerHTML =
                     '<p style="font-weight:600;margin:0 0 0.1rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + (slot.code || '—') + '</p>' +
                     '<p style="margin:0 0 0.1rem;opacity:0.8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + (slot.name || '') + '</p>' +
-                    '<p style="margin:0;opacity:0.6;">' + (slot.venue || '') + '</p>';
+                    '<p style="margin:0;opacity:0.7;">' + (slot.venue || '') + '</p>' +
+                    (released ? '<p class="slot-status">Released for public booking</p>' : '');
                 btn.onclick = function() { openModal(slot); };
                 td.appendChild(btn);
+
+                if (released && currentUserRole === 'LECTURER') {
+                    var actionBtn = document.createElement('button');
+                    actionBtn.className = 'slot-action-btn';
+                    actionBtn.textContent = 'Book Makeup';
+                    actionBtn.onclick = function() { bookMakeup(slot); };
+                    td.appendChild(actionBtn);
+                }
             } else {
                 var empty = document.createElement('div');
                 empty.className = 'empty-slot';
@@ -225,6 +314,7 @@
             ['Lecturer',   slot.lecturer || '—'],
             ['Cohort',     slot.cohort || '—'],
             ['Students',   slot.students],
+            ['Status',     slot.status || 'SCHEDULED'],
             ['Department', slot.dept || '—']
         ];
         var body = document.getElementById('modalBody');
