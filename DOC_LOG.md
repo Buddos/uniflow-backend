@@ -1,6 +1,14 @@
 # DOC Log
 
 ## 2026-04-11
+- Action: Implemented rejection reasons and resubmission flow for cross-faculty requests.
+- Status: Updated
+- Changes: Added request rejection notifications using the existing notifications table so the requesting COD receives a dashboard alert when a request is rejected. Exposed `rejectionReason` in the request dashboard payload, added a resubmission endpoint that moves a rejected request back to `PENDING` after cohort/requirements updates, and tightened service tests for rejection and resubmission transitions.
+- Files: [src/main/java/com/uniflow/service/RequestService.java](src/main/java/com/uniflow/service/RequestService.java), [src/main/java/com/uniflow/controller/RequestController.java](src/main/java/com/uniflow/controller/RequestController.java), [src/main/java/com/uniflow/repository/UserRepository.java](src/main/java/com/uniflow/repository/UserRepository.java), [src/main/java/com/uniflow/dto/RequestResubmissionDTO.java](src/main/java/com/uniflow/dto/RequestResubmissionDTO.java), [src/test/java/com/uniflow/service/RequestServiceTest.java](src/test/java/com/uniflow/service/RequestServiceTest.java)
+- Commit: fa89d30
+- Push: Pushed to origin/main
+
+## 2026-04-11
 - Action: Prevented double-bookings with database-level uniqueness and serializable booking writes.
 - Status: Updated
 - Changes: Added `booking_date` to the bookings schema and enforced a unique constraint on `(venue_id, booking_date, start_time)` at both the SQL schema and JPA mapping levels. Introduced a serializable `bookMakeupClass(...)` booking path with a final `existsByVenueAndBookingDateAndStartTime(...)` check before save, routed booking callers through that path, and added a regression test for the duplicate-slot race condition. Added a `DataIntegrityViolationException` handler that returns HTTP 409 with a sanitized live-map refresh message.
