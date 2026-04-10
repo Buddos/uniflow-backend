@@ -22,6 +22,10 @@ public class Venue {
     private Integer floor;
     
     private String equipmentHome;
+
+    private String equipmentOfficeName;
+
+    private Integer distanceFromOfficeMeters;
     
     private Boolean hasProjector = false;
     
@@ -85,6 +89,12 @@ public class Venue {
     
     public String getEquipmentHome() { return equipmentHome; }
     public void setEquipmentHome(String equipmentHome) { this.equipmentHome = equipmentHome; }
+
+    public String getEquipmentOfficeName() { return equipmentOfficeName; }
+    public void setEquipmentOfficeName(String equipmentOfficeName) { this.equipmentOfficeName = equipmentOfficeName; }
+
+    public Integer getDistanceFromOfficeMeters() { return distanceFromOfficeMeters; }
+    public void setDistanceFromOfficeMeters(Integer distanceFromOfficeMeters) { this.distanceFromOfficeMeters = distanceFromOfficeMeters; }
     
     public Boolean getHasProjector() { return hasProjector; }
     public void setHasProjector(Boolean hasProjector) { this.hasProjector = hasProjector; }

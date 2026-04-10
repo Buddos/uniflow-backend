@@ -36,6 +36,8 @@ CREATE TABLE venues (
     capacity INTEGER,
     building VARCHAR(255),
     floor INTEGER,
+    equipment_office_name VARCHAR(255),
+    distance_from_office_meters INTEGER,
     location VARCHAR(255),
     resource_home VARCHAR(255),
     has_projector BOOLEAN DEFAULT FALSE,

@@ -37,4 +37,13 @@ public class GlobalExceptionHandler {
         error.put("status", HttpStatus.UNAUTHORIZED.value());
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
     }
+
+    @ExceptionHandler(ProximityViolationException.class)
+    public ResponseEntity<Map<String, Object>> handleProximityViolationException(ProximityViolationException ex) {
+        Map<String, Object> error = new HashMap<>();
+        error.put("timestamp", LocalDateTime.now());
+        error.put("message", ex.getMessage());
+        error.put("status", HttpStatus.BAD_REQUEST.value());
+        return ResponseEntity.badRequest().body(error);
+    }
 }

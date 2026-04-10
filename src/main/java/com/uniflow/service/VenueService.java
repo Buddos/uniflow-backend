@@ -5,6 +5,7 @@ import com.uniflow.repository.VenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +40,8 @@ public class VenueService {
         venue.setBuilding(venueDetails.getBuilding());
         venue.setFloor(venueDetails.getFloor());
         venue.setEquipmentHome(venueDetails.getEquipmentHome());
+        venue.setEquipmentOfficeName(venueDetails.getEquipmentOfficeName());
+        venue.setDistanceFromOfficeMeters(venueDetails.getDistanceFromOfficeMeters());
         venue.setHasProjector(venueDetails.getHasProjector());
         venue.setHasWhiteboard(venueDetails.getHasWhiteboard());
         venue.setHasAC(venueDetails.getHasAC());
@@ -96,8 +99,21 @@ public class VenueService {
                 .filter(Venue::getHasProjector)
                 .toList();
         }
+
+        venues = venues.stream()
+            .sorted(
+                Comparator
+                    .comparing((Venue venue) -> !isWithinProximityLimit(venue))
+                    .thenComparing(Venue::getDistanceFromOfficeMeters, Comparator.nullsLast(Integer::compareTo))
+            )
+            .toList();
         
         return venues;
+    }
+
+    private boolean isWithinProximityLimit(Venue venue) {
+        Integer distance = venue.getDistanceFromOfficeMeters();
+        return distance != null && distance <= 300;
     }
     
     private void mapVenueFields(Venue venue) {

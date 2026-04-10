@@ -1,5 +1,6 @@
 package com.uniflow.service;
 
+import com.uniflow.exception.ProximityViolationException;
 import com.uniflow.model.Booking;
 import com.uniflow.model.User;
 import com.uniflow.model.Venue;
@@ -9,6 +10,7 @@ import com.uniflow.repository.VenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +28,8 @@ public class BookingService {
     private VenueRepository venueRepository;
     
     public Booking createBooking(Booking booking) {
+        assertWithinProximityLimit(booking.getVenue());
+
         // Check for conflicts
         List<Booking> conflicts = bookingRepository.findConflictingBookings(
             booking.getVenue(),
@@ -90,8 +94,25 @@ public class BookingService {
                 availableBookings.add(available);
             }
         }
+
+        availableBookings.sort(
+            Comparator
+                .comparing((Booking booking) -> !isWithinProximityLimit(booking.getVenue()))
+                .thenComparing(booking -> booking.getVenue().getDistanceFromOfficeMeters(), Comparator.nullsLast(Integer::compareTo))
+        );
         
         return availableBookings;
+    }
+
+    private void assertWithinProximityLimit(Venue venue) {
+        if (venue == null || !isWithinProximityLimit(venue)) {
+            throw new ProximityViolationException("Cannot assign venue: Location exceeds the 300m equipment proximity limit.");
+        }
+    }
+
+    private boolean isWithinProximityLimit(Venue venue) {
+        Integer distance = venue.getDistanceFromOfficeMeters();
+        return distance != null && distance <= 300;
     }
     
     public Map<String, Object> getBookingStatistics() {

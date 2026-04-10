@@ -1,6 +1,13 @@
 # DOC Log
 
 ## 2026-04-10
+- Action: Implemented Module IV 300m Asset-Home Rule for venue assignment.
+- Status: Updated
+- Changes: Added `equipmentOfficeName` and `distanceFromOfficeMeters` to the venue model, updated schema, enforced proximity checks in booking assignment with `ProximityViolationException`, prioritized <=300m venues in availability/optimal venue queries, and seeded proximity values in data initialization. Added unit tests for the booking distance guard.
+- Files: [src/main/java/com/uniflow/model/Venue.java](src/main/java/com/uniflow/model/Venue.java), [src/main/java/com/uniflow/service/BookingService.java](src/main/java/com/uniflow/service/BookingService.java), [src/main/java/com/uniflow/service/VenueService.java](src/main/java/com/uniflow/service/VenueService.java), [src/main/java/com/uniflow/exception/ProximityViolationException.java](src/main/java/com/uniflow/exception/ProximityViolationException.java), [src/main/java/com/uniflow/exception/GlobalExceptionHandler.java](src/main/java/com/uniflow/exception/GlobalExceptionHandler.java), [src/main/java/com/uniflow/config/DataInitializer.java](src/main/java/com/uniflow/config/DataInitializer.java), [uniflow-schema.sql](uniflow-schema.sql), [src/test/java/com/uniflow/service/BookingServiceTest.java](src/test/java/com/uniflow/service/BookingServiceTest.java)
+- Commit: Not created
+- Push: Not pushed
+
 - Action: Cleaned working directory before finalizing the system lock change.
 - Status: Updated
 - Changes: Removed generated runtime log noise from versioned changes and trimmed unused imports from the new unit test to avoid dead boilerplate.

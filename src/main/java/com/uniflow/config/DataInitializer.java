@@ -121,6 +121,8 @@ public class DataInitializer implements CommandLineRunner {
                 venue.setBuilding("PST Building");
                 venue.setFloor(i < 2 ? 1 : 2);
                 venue.setEquipmentHome("PST Equipment Room");
+                venue.setEquipmentOfficeName("PST Equipment Office");
+                venue.setDistanceFromOfficeMeters(120 + (i * 20));
                 venue.setHasProjector(true);
                 venue.setHasWhiteboard(true);
                 venue.setHasAC(i >= 2);
@@ -140,6 +142,8 @@ public class DataInitializer implements CommandLineRunner {
                 venue.setBuilding("NPL Building");
                 venue.setFloor((i / 2) + 1);
                 venue.setEquipmentHome("NPL Equipment Room");
+                venue.setEquipmentOfficeName("NPL Equipment Office");
+                venue.setDistanceFromOfficeMeters(140 + (i * 25));
                 venue.setHasProjector(true);
                 venue.setHasWhiteboard(true);
                 venue.setHasAC(true);
@@ -159,6 +163,8 @@ public class DataInitializer implements CommandLineRunner {
                 venue.setBuilding("B Building");
                 venue.setFloor(i < 2 ? 1 : (i < 4 ? 2 : 3));
                 venue.setEquipmentHome("B Equipment Room");
+                venue.setEquipmentOfficeName("B Equipment Office");
+                venue.setDistanceFromOfficeMeters(100 + (i * 30));
                 venue.setHasProjector(i >= 2);
                 venue.setHasWhiteboard(true);
                 venue.setHasAC(false);
@@ -178,6 +184,8 @@ public class DataInitializer implements CommandLineRunner {
                 venue.setBuilding("ED Building");
                 venue.setFloor(i == 0 ? 1 : 2);
                 venue.setEquipmentHome("ED Equipment Room");
+                venue.setEquipmentOfficeName("ED Equipment Office");
+                venue.setDistanceFromOfficeMeters(110 + (i * 40));
                 venue.setHasProjector(true);
                 venue.setHasWhiteboard(true);
                 venue.setHasAC(false);
