@@ -8,6 +8,8 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User {
+    public static final String STUDENT_ROLE = "STUDENT";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

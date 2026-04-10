@@ -1,6 +1,7 @@
 package com.uniflow.interceptor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.uniflow.model.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,6 +16,12 @@ import java.util.regex.Pattern;
 public class AuthInterceptor implements HandlerInterceptor {
 
     private static final Set<String> TIMETABLE_WRITE_METHODS = Set.of("POST", "PUT", "PATCH", "DELETE");
+    private static final Set<String> STUDENT_READ_ONLY_PATHS = Set.of(
+        "/api/timetable",
+        "/api/venues",
+        "/api/venues/live-map",
+        "/api/trips"
+    );
     private static final Pattern BOOKING_VOUCHER_PATTERN = Pattern.compile("^/api/bookings/\\d+/voucher$");
     
     private ObjectMapper objectMapper = new ObjectMapper();
@@ -71,6 +78,14 @@ public class AuthInterceptor implements HandlerInterceptor {
     }
 
     private boolean isRoleAllowed(String path, String method, String role) {
+        if (User.STUDENT_ROLE.equals(role) && TIMETABLE_WRITE_METHODS.contains(method)) {
+            return false;
+        }
+
+        if (User.STUDENT_ROLE.equals(role)) {
+            return "GET".equals(method) && STUDENT_READ_ONLY_PATHS.contains(path);
+        }
+
         if (BOOKING_VOUCHER_PATTERN.matcher(path).matches()) {
             return "CLASS_REP".equals(role);
         }

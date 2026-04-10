@@ -1,6 +1,14 @@
 # DOC Log
 
 ## 2026-04-11
+- Action: Added read-only STUDENT RBAC constraints.
+- Status: Updated
+- Changes: Defined `STUDENT` as a valid role constant on the user model and restricted student access in the auth interceptor to GET-only requests for `/api/timetable`, `/api/venues`, `/api/venues/live-map`, and `/api/trips`. All student `POST`, `PUT`, `PATCH`, and `DELETE` requests are rejected across the application. Added an interceptor regression test to verify allowed reads and blocked writes.
+- Files: [src/main/java/com/uniflow/model/User.java](src/main/java/com/uniflow/model/User.java), [src/main/java/com/uniflow/interceptor/AuthInterceptor.java](src/main/java/com/uniflow/interceptor/AuthInterceptor.java), [src/test/java/com/uniflow/interceptor/AuthInterceptorTest.java](src/test/java/com/uniflow/interceptor/AuthInterceptorTest.java)
+- Commit: Not created
+- Push: Not pushed
+
+## 2026-04-11
 - Action: Enforced transaction integrity and high-availability runtime tuning.
 - Status: Updated
 - Changes: Added `@Transactional` boundaries to core mutating service operations so multi-step writes roll back atomically on failure (`RequestService` request lifecycle/deadline fallback, `BookingService` create/cancel booking with venue status updates, and `TimetableService` trip-driven release flow). Tuned HikariCP for higher concurrency (`maximum-pool-size: 50`, `minimum-idle: 10`, `idle-timeout: 30000`, `max-lifetime: 1800000`) and tuned embedded Tomcat (`threads.max: 200`, `connection-timeout: 20000`). Added a global `Exception.class` handler that returns a sanitized 500 JSON payload without exposing internal exception details.
