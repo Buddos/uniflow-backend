@@ -5,8 +5,8 @@
 - Status: Updated
 - Changes: Defined `STUDENT` as a valid role constant on the user model and restricted student access in the auth interceptor to GET-only requests for `/api/timetable`, `/api/venues`, `/api/venues/live-map`, and `/api/trips`. All student `POST`, `PUT`, `PATCH`, and `DELETE` requests are rejected across the application. Added an interceptor regression test to verify allowed reads and blocked writes.
 - Files: [src/main/java/com/uniflow/model/User.java](src/main/java/com/uniflow/model/User.java), [src/main/java/com/uniflow/interceptor/AuthInterceptor.java](src/main/java/com/uniflow/interceptor/AuthInterceptor.java), [src/test/java/com/uniflow/interceptor/AuthInterceptorTest.java](src/test/java/com/uniflow/interceptor/AuthInterceptorTest.java)
-- Commit: Not created
-- Push: Not pushed
+- Commit: 4068633
+- Push: Pushed to origin/main
 
 ## 2026-04-11
 - Action: Enforced transaction integrity and high-availability runtime tuning.
