@@ -1,6 +1,13 @@
 # DOC Log
 
 ## 2026-04-10
+- Action: Implemented digital voucher QR generation for equipment pickup.
+- Status: Updated
+- Changes: Added ZXing dependencies, created a QR code generator service that returns Base64 PNG output, added a booking voucher endpoint at `/api/bookings/{id}/voucher`, and introduced unit tests for QR generation validity and payload validation.
+- Files: [pom.xml](pom.xml), [src/main/java/com/uniflow/service/QRCodeGeneratorService.java](src/main/java/com/uniflow/service/QRCodeGeneratorService.java), [src/main/java/com/uniflow/controller/BookingController.java](src/main/java/com/uniflow/controller/BookingController.java), [src/main/java/com/uniflow/service/BookingService.java](src/main/java/com/uniflow/service/BookingService.java), [src/test/java/com/uniflow/service/QRCodeGeneratorServiceTest.java](src/test/java/com/uniflow/service/QRCodeGeneratorServiceTest.java)
+- Commit: Not created
+- Push: Not pushed
+
 - Action: Implemented Module IV 300m Asset-Home Rule for venue assignment.
 - Status: Updated
 - Changes: Added `equipmentOfficeName` and `distanceFromOfficeMeters` to the venue model, updated schema, enforced proximity checks in booking assignment with `ProximityViolationException`, prioritized <=300m venues in availability/optimal venue queries, and seeded proximity values in data initialization. Added unit tests for the booking distance guard.

@@ -8,6 +8,7 @@ import com.uniflow.model.Venue;
 import com.uniflow.repository.UserRepository;
 import com.uniflow.repository.VenueRepository;
 import com.uniflow.service.BookingService;
+import com.uniflow.service.QRCodeGeneratorService;
 import com.uniflow.service.RealtimeService;
 import com.uniflow.util.SessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,6 +36,9 @@ public class BookingController {
     
     @Autowired
     private RealtimeService realtimeService;
+
+    @Autowired
+    private QRCodeGeneratorService qrCodeGeneratorService;
     
     @GetMapping("/my")
     public ResponseEntity<List<Booking>> getMyBookings(HttpServletRequest request) {
@@ -88,5 +93,24 @@ public class BookingController {
     @GetMapping("/stats")
     public ResponseEntity<Map<String, Object>> getStats() {
         return ResponseEntity.ok(bookingService.getBookingStatistics());
+    }
+
+    @GetMapping("/{bookingId}/voucher")
+    public ResponseEntity<Map<String, Object>> getVoucher(@PathVariable Long bookingId) {
+        Booking booking = bookingService.getBookingById(bookingId);
+
+        String payload = "bookingId=" + booking.getId()
+            + "|venueName=" + booking.getVenue().getName()
+            + "|equipmentOfficeName=" + booking.getVenue().getEquipmentOfficeName()
+            + "|scheduledEndTime=" + booking.getEndTime()
+            + "|generatedAt=" + LocalDateTime.now();
+
+        String qrCodeBase64 = qrCodeGeneratorService.generateQrCodeBase64(payload);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("bookingId", booking.getId());
+        response.put("payload", payload);
+        response.put("qrCodeBase64", qrCodeBase64);
+        return ResponseEntity.ok(response);
     }
 }

@@ -81,6 +81,11 @@ public class BookingService {
         
         return bookingRepository.save(booking);
     }
+
+    public Booking getBookingById(Long bookingId) {
+        return bookingRepository.findById(bookingId)
+            .orElseThrow(() -> new RuntimeException("Booking not found"));
+    }
     
     public List<Booking> getAvailableVenuesForMakeupClass(LocalDateTime startTime, LocalDateTime endTime) {
         List<Venue> allVenues = venueRepository.findAll();
