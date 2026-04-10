@@ -35,6 +35,10 @@ public class TimetableEntry {
     
     private String cohort;
     
+    private Integer totalAdmittedStudents;
+
+    private Integer registeredStudents;
+
     private Integer expectedStudents;
     
     private Boolean isMakeupClass = false;
@@ -88,6 +92,12 @@ public class TimetableEntry {
     
     public String getCohort() { return cohort; }
     public void setCohort(String cohort) { this.cohort = cohort; }
+
+    public Integer getTotalAdmittedStudents() { return totalAdmittedStudents; }
+    public void setTotalAdmittedStudents(Integer totalAdmittedStudents) { this.totalAdmittedStudents = totalAdmittedStudents; }
+
+    public Integer getRegisteredStudents() { return registeredStudents; }
+    public void setRegisteredStudents(Integer registeredStudents) { this.registeredStudents = registeredStudents; }
     
     public Integer getExpectedStudents() { return expectedStudents; }
     public void setExpectedStudents(Integer expectedStudents) { this.expectedStudents = expectedStudents; }

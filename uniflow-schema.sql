@@ -69,6 +69,8 @@ CREATE TABLE timetable_entries (
     academic_year VARCHAR(50),
     semester VARCHAR(50),
     cohort VARCHAR(100),
+    total_admitted_students INTEGER,
+    registered_students INTEGER,
     expected_students INTEGER,
     is_makeup_class BOOLEAN DEFAULT FALSE,
     status VARCHAR(50) DEFAULT 'SCHEDULED',

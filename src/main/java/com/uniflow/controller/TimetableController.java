@@ -45,8 +45,8 @@ public class TimetableController {
             // Flatten venue - return name as string
             slot.put("venue", entry.getVenue() != null ? entry.getVenue().getName() : "Unknown");
             
-            // Cohort size - use venue capacity as proxy if not available
-            slot.put("cohortSize", entry.getVenue() != null ? entry.getVenue().getCapacity() : 0);
+            // Cohort size should come from admitted cohort projections
+            slot.put("cohortSize", entry.getTotalAdmittedStudents() != null ? entry.getTotalAdmittedStudents() : 0);
             
             // Keep lecturer and department as strings
             slot.put("lecturer", entry.getLecturer() != null ? entry.getLecturer().getName() : "Unknown");

@@ -30,13 +30,16 @@ public class TimetableService {
     }
     
     public TimetableEntry createTimetableEntry(TimetableEntry entry) {
-        // Apply 110% capacity rule
-        if (entry.getExpectedStudents() != null) {
-            int requiredCapacity = (int) Math.ceil(entry.getExpectedStudents() * 1.1);
-            Venue venue = entry.getVenue();
-            if (venue.getCapacity() < requiredCapacity) {
-                throw new RuntimeException("Venue capacity insufficient. Required: " + requiredCapacity + ", Available: " + venue.getCapacity());
-            }
+        // Module I rule: capacity is projected from admitted cohort only.
+        if (entry.getTotalAdmittedStudents() == null) {
+            throw new RuntimeException("Total admitted cohort count is required for timetable projection");
+        }
+
+        int admitted = entry.getTotalAdmittedStudents();
+        int requiredCapacity = (admitted * 110 + 99) / 100;
+        Venue venue = entry.getVenue();
+        if (venue.getCapacity() < requiredCapacity) {
+            throw new RuntimeException("Venue capacity insufficient. Required: " + requiredCapacity + ", Available: " + venue.getCapacity());
         }
         
         // Assign color based on department

@@ -1,6 +1,13 @@
 # DOC Log
 
 ## 2026-04-10
+- Action: Implemented Module I cohort-based projection rule for timetable capacity.
+- Status: Updated
+- Changes: Added `totalAdmittedStudents` and `registeredStudents` to timetable entries and schema, refactored timetable 110% capacity validation to use admitted cohort counts only, and updated timetable output mapping to report admitted cohort size. Added unit tests proving acceptance at >=110% admitted and rejection below 110% even when registered count is zero.
+- Files: [src/main/java/com/uniflow/model/TimetableEntry.java](src/main/java/com/uniflow/model/TimetableEntry.java), [src/main/java/com/uniflow/service/TimetableService.java](src/main/java/com/uniflow/service/TimetableService.java), [src/main/java/com/uniflow/controller/TimetableController.java](src/main/java/com/uniflow/controller/TimetableController.java), [uniflow-schema.sql](uniflow-schema.sql), [src/test/java/com/uniflow/service/TimetableServiceTest.java](src/test/java/com/uniflow/service/TimetableServiceTest.java)
+- Commit: Not created
+- Push: Not pushed
+
 - Action: Implemented digital voucher QR generation for equipment pickup.
 - Status: Updated
 - Changes: Added ZXing dependencies, created a QR code generator service that returns Base64 PNG output, added a booking voucher endpoint at `/api/bookings/{id}/voucher`, and introduced unit tests for QR generation validity and payload validation.
