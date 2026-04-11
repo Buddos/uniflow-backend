@@ -1,6 +1,14 @@
 # DOC Log
 
 ## 2026-04-11
+- Action: Converted the authentication web entry point from Spring MVC to a servlet-driven flow.
+- Status: Updated
+- Changes: Removed the `AuthController` web controller and moved auth request handling into `AuthenticationServlet`. The servlet now handles login via `doPost`, logout via `doGet`, forwards successful auth flows to `/WEB-INF/jsp/index.jsp`, and continues to support session checks and registration without touching service, model, or repository code.
+- Files: [src/main/java/com/uniflow/controller/AuthController.java](src/main/java/com/uniflow/controller/AuthController.java), [src/main/java/com/uniflow/servlet/AuthenticationServlet.java](src/main/java/com/uniflow/servlet/AuthenticationServlet.java), [src/main/webapp/WEB-INF/jsp/index.jsp](src/main/webapp/WEB-INF/jsp/index.jsp), [src/test/java/com/uniflow/servlet/AuthenticationServletTest.java](src/test/java/com/uniflow/servlet/AuthenticationServletTest.java)
+- Commit: Not created
+- Push: Not pushed
+
+## 2026-04-11
 - Action: Optimized long-form session timeout and sliding expiration behavior.
 - Status: Updated
 - Changes: Increased servlet session timeout to 2 hours in runtime config and aligned cookie max-age/session metadata to the same window. Reworked session validity checks to derive from configured max inactive interval instead of hardcoded 30-minute thresholds, and introduced a post-success session touch so successful API responses extend COD session validity (sliding expiration).
