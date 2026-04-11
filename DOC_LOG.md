@@ -1,6 +1,14 @@
 # DOC Log
 
 ## 2026-04-11
+- Action: Converted the course request handshake from the deleted Spring MVC controller into a servlet-driven flow.
+- Status: Updated
+- Changes: Replaced `RequestController` with a new `RequestServlet` that serves the course-request JSP view, exposes GET handlers for handshake-oriented lists plus stats/pending lookups, and handles create/process/resubmit POST actions. The servlet now enforces the submission lock before both new submissions and resubmissions, keeps the realtime request broadcast path intact, and supports both form posts and JSON payloads. Added servlet tests for handshake rendering, lock enforcement, and reject processing.
+- Files: [src/main/java/com/uniflow/controller/RequestController.java](src/main/java/com/uniflow/controller/RequestController.java), [src/main/java/com/uniflow/servlet/RequestServlet.java](src/main/java/com/uniflow/servlet/RequestServlet.java), [src/test/java/com/uniflow/servlet/RequestServletTest.java](src/test/java/com/uniflow/servlet/RequestServletTest.java)
+- Commit: Not created
+- Push: Not pushed
+
+## 2026-04-11
 - Action: Converted Venue and Trip controllers into servlet/JSP live map flows.
 - Status: Updated
 - Changes: Removed the Spring MVC venue and trip controllers and moved the live map request handling into `VenueServlet` and lecturer trip logging into `TripServlet`. The venue servlet now loads venue status plus active trips, stores the venue list in `request.setAttribute("venues", venueList)`, and forwards to `/WEB-INF/jsp/liveMap.jsp`. The trip servlet accepts lecturer trip POST requests, triggers the existing trip release logic, refreshes the live map attributes, and forwards back to the live map JSP.
