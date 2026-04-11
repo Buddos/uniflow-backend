@@ -1,6 +1,14 @@
 # DOC Log
 
 ## 2026-04-11
+- Action: Converted Venue and Trip controllers into servlet/JSP live map flows.
+- Status: Updated
+- Changes: Removed the Spring MVC venue and trip controllers and moved the live map request handling into `VenueServlet` and lecturer trip logging into `TripServlet`. The venue servlet now loads venue status plus active trips, stores the venue list in `request.setAttribute("venues", venueList)`, and forwards to `/WEB-INF/jsp/liveMap.jsp`. The trip servlet accepts lecturer trip POST requests, triggers the existing trip release logic, refreshes the live map attributes, and forwards back to the live map JSP.
+- Files: [src/main/java/com/uniflow/controller/VenueController.java](src/main/java/com/uniflow/controller/VenueController.java), [src/main/java/com/uniflow/controller/TripController.java](src/main/java/com/uniflow/controller/TripController.java), [src/main/java/com/uniflow/servlet/VenueServlet.java](src/main/java/com/uniflow/servlet/VenueServlet.java), [src/main/java/com/uniflow/servlet/TripServlet.java](src/main/java/com/uniflow/servlet/TripServlet.java), [src/main/webapp/WEB-INF/jsp/liveMap.jsp](src/main/webapp/WEB-INF/jsp/liveMap.jsp), [src/test/java/com/uniflow/servlet/VenueServletTest.java](src/test/java/com/uniflow/servlet/VenueServletTest.java), [src/test/java/com/uniflow/servlet/TripServletTest.java](src/test/java/com/uniflow/servlet/TripServletTest.java)
+- Commit: Not created
+- Push: Not pushed
+
+## 2026-04-11
 - Action: Converted the authentication web entry point from Spring MVC to a servlet-driven flow.
 - Status: Updated
 - Changes: Removed the `AuthController` web controller and moved auth request handling into `AuthenticationServlet`. The servlet now handles login via `doPost`, logout via `doGet`, forwards successful auth flows to `/WEB-INF/jsp/index.jsp`, and continues to support session checks and registration without touching service, model, or repository code.
