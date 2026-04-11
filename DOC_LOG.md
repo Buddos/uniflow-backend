@@ -5,8 +5,8 @@
 - Status: Updated
 - Changes: Replaced `RequestController` with a new `RequestServlet` that serves the course-request JSP view, exposes GET handlers for handshake-oriented lists plus stats/pending lookups, and handles create/process/resubmit POST actions. The servlet now enforces the submission lock before both new submissions and resubmissions, keeps the realtime request broadcast path intact, and supports both form posts and JSON payloads. Added servlet tests for handshake rendering, lock enforcement, and reject processing.
 - Files: [src/main/java/com/uniflow/controller/RequestController.java](src/main/java/com/uniflow/controller/RequestController.java), [src/main/java/com/uniflow/servlet/RequestServlet.java](src/main/java/com/uniflow/servlet/RequestServlet.java), [src/test/java/com/uniflow/servlet/RequestServletTest.java](src/test/java/com/uniflow/servlet/RequestServletTest.java)
-- Commit: Not created
-- Push: Not pushed
+- Commit: cc265fb
+- Push: Pushed to origin/main
 
 ## 2026-04-11
 - Action: Converted Venue and Trip controllers into servlet/JSP live map flows.
